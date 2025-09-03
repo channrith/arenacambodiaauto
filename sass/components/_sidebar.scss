@@ -1,5 +1,12 @@
 .sidebar {
+  width: 350px;
+  padding: 20px;
+  box-sizing: border-box;
+
   &__top {
+    background-color: #f4f4f4;
+    padding: 15px;
+  
     .producer {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -10,7 +17,7 @@
         padding: 0;
       }
 
-      &__items {
+      &__item {
         margin-bottom: 10px;
       }
 

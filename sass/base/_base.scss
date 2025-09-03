@@ -13,8 +13,11 @@ body {
   font-family: Arial, sans-serif;
 }
 
-main {
-  min-height: calc(100vh - 13rem);
+h3 {
+  font-size: 1.17em;
+  font-weight: 600;
+  font-family: Arial, sans-serif;
+  line-height: 4rem;
 }
 
 a {
@@ -68,5 +71,12 @@ html {
 }
 
 .main {
+  min-height: calc(100vh - 13rem);
   display: flex;
+
+  &__container {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+  }
 }
