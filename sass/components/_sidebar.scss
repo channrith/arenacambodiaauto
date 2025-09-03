@@ -1,0 +1,46 @@
+.sidebar {
+  &__top {
+    .producer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+
+      &__list {
+        list-style: none;
+        padding: 0;
+      }
+
+      &__items {
+        margin-bottom: 10px;
+      }
+
+      &__link {
+        display: block;
+        padding: 5px 10px;
+        text-decoration: none;
+        color: black;
+        border-radius: 3px;
+        transition: background-color 0.2s ease, color 0.2s ease;
+
+        &:hover {
+          background-color: $red;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &__ad {
+    margin-top: 30px;
+    text-align: center;
+
+    a {
+      display: inline-block;
+    }
+
+    img {
+      width: 100%;
+      border-radius: 5px;
+    }
+  }
+}
