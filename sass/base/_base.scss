@@ -11,13 +11,23 @@ body {
   background-color: $light-beige;
   margin: 0;
   font-family: Arial, sans-serif;
+  font-size: 1.6rem;
 }
 
 h3 {
-  font-size: 1.17em;
-  font-weight: 600;
-  font-family: Arial, sans-serif;
+  font-size: 1.16em;
   line-height: 4rem;
+}
+
+h4 {
+  font-size: 1em;
+  line-height: 2rem;
+}
+
+h3,
+h4 {
+  font-family: Arial, sans-serif;
+  font-weight: 600;
 }
 
 a {

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Advertisement from "../Advertisement";
 
 const Sidebar = () => {
     return (
@@ -42,17 +43,21 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            <div className="sidebar__ad">
-                <a href="#">
-                    <Image src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png" alt="Sidebar Advertisement" width={250} height={250} />
-                </a>
-            </div>
+            <Advertisement
+                image="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                alt="Your ad could be here!"
+                link="https://arenacambodiaauto.com/promo"
+                height={300}
+                width={300}
+            />
 
-            <div className="sidebar__ad">
-                <a href="#">
-                    <Image src="/image/f2qy2v60cFOQIjm3DxAbrULlUgiBvdTWCGOG4WUp.jpg" alt="Sidebar Advertisement" width={310} height={310} />
-                </a>
-            </div >
+            <Advertisement
+                image="/image/f2qy2v60cFOQIjm3DxAbrULlUgiBvdTWCGOG4WUp.jpg"
+                alt="Your ad could be here!"
+                link="https://arenacambodiaauto.com/promo"
+                height={300}
+                width={300}
+            />
         </aside >
     )
 }
