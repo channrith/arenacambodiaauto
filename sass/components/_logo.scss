@@ -1,0 +1,28 @@
+.logo-page {
+  .car-list-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .list {
+    display: flex;
+    flex-wrap: wrap; /* allow wrapping to next row */
+    justify-content: center; /* center items horizontally */
+    gap: 15px;
+  }
+
+  .list-item {
+    flex: 0 0 300px; /* fixed width for each item */
+    height: 150px; /* fixed height */
+    border-radius: 6px;
+    overflow: hidden; /* crop any overflow */
+  }
+
+  .list-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fills container without distortion */
+    display: block;
+  }
+}

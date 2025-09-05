@@ -1,0 +1,36 @@
+.full-width-section {
+  width: 100%;
+  margin: 0;
+  text-align: center; /* centers paragraph text */
+}
+
+.full-width-image {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 15px;
+}
+
+.full-width-text {
+  font-size: 16px;
+  color: #333;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+/* Two images side by side */
+.two-images {
+  display: flex;
+  gap: 15px;
+  justify-content: center; /* center the row */
+  margin-bottom: 20px;
+}
+
+.two-images img {
+  width: calc(50% - 7.5px); /* 50% width minus half gap */
+  height: auto;
+  border-radius: 6px;
+  display: block;
+}

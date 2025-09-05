@@ -18,13 +18,16 @@ const Navbar = ({ homepage }) => {
         <nav className={`nav ${homepage ? 'nav--homepage' : ''}`}>
             <ul className="nav__menu">
                 {
-                    navItems.map((item) => (
-                        <li key={item.path}>
-                            <Link href={item.path} className={pathname === item.path ? 'active' : ''}>
-                                {item.label}
-                            </Link>
-                        </li>
-                    )
+                    navItems.map((item) => {
+                        const isActive = pathname === item.path || pathname.startsWith(`${item.path}/`);
+                        return (
+                            <li key={item.path}>
+                                <Link href={item.path} className={isActive ? 'active' : ''}>
+                                    {item.label}
+                                </Link>
+                            </li>
+                        )
+                    }
                     )
                 }
             </ul>

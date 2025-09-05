@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from 'react';
+import Link from 'next/link';
 import Sidebar from "../../_components/Layout/Sidebar";
 import Navbar from "../../_components/Layout/Navbar";
 
@@ -32,35 +33,65 @@ export default function Make() {
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 1" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 2" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 3" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 4" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 5" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
@@ -73,14 +104,26 @@ export default function Make() {
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 1" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>
                                     <div className="list-item">
                                         <img src="/image/toyota-urban-cruiser-FWD-49kWh.jpg" alt="Car 2" />
                                         <div className="list-info">
-                                            <h4>Urban Cruiser FWD 49kWh</h4>
+                                            <h4>
+                                                <Link
+                                                    href="/make/toyota/urban-cruiser-FWD-49kWh"
+                                                >
+                                                    Urban Cruiser FWD 49kWh
+                                                </Link>
+                                            </h4>
                                             <p>2024 -</p>
                                         </div>
                                     </div>

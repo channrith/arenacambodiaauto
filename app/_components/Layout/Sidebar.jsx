@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Advertisement from "../Advertisement";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
     const pathname = usePathname();
@@ -31,6 +33,7 @@ const Sidebar = () => {
         { path: "/make/jaguar", label: "Jaguar" },
         { path: "/make/porsche", label: "Porsche" },
         { path: "/make/land-rover", label: "Land Rover" },
+        { path: "/logo", label: "All Brands" },
     ];
 
     return (
@@ -47,7 +50,13 @@ const Sidebar = () => {
                                 href={maker.path}
                                 className={`maker__link ${isActive ? 'active' : ''}`}
                             >
-                                {maker.label}
+                                {maker.path === "/logo" ? (
+                                    <>
+                                        <FontAwesomeIcon icon={faBars} /> {maker.label}
+                                    </>
+                                ) : (
+                                    maker.label
+                                )}
                             </Link>
                         )
                     })}

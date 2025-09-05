@@ -1,9 +1,11 @@
 "use client"
 
 import { useState } from 'react';
+import Link from 'next/link';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCubes, faComment, faImage } from "@fortawesome/free-solid-svg-icons";
 import Sidebar from "../../../_components/Layout/Sidebar";
 import Navbar from "../../../_components/Layout/Navbar";
-import Link from 'next/link';
 
 export default function Make() {
     const [activeTab, setActiveTab] = useState('opinions')
@@ -24,13 +26,15 @@ export default function Make() {
                     <div className="car-model">
                         <div className="tabs">
                             <ul className="tab-menu">
-                                <li id="opinions" className={activeTab === 'opinions' ? 'active' : ''} data-tab="opinions" onClick={() => handleTabClick('opinions')}>Opinions</li>
-                                <li><Link
-                                    href="/compare"
-                                >
-                                    Compare
-                                </Link></li>
-                                <li id="pictures" className={activeTab === 'pictures' ? 'active' : ''} data-tab="pictures" onClick={() => handleTabClick('pictures')}>Pictures</li>
+                                <li id="opinions" className={activeTab === 'opinions' ? 'active' : ''} data-tab="opinions" onClick={() => handleTabClick('opinions')}><FontAwesomeIcon icon={faComment} />Opinions</li>
+                                <li>
+                                    <Link
+                                        href="/compare"
+                                    >
+                                        <FontAwesomeIcon icon={faCubes} />Compare
+                                    </Link>
+                                </li>
+                                <li id="pictures" className={activeTab === 'pictures' ? 'active' : ''} data-tab="pictures" onClick={() => handleTabClick('pictures')}><FontAwesomeIcon icon={faImage} />Pictures</li>
                             </ul>
 
                             <div className={`tab-content tab-content-options ${activeTab === 'opinions' ? 'active' : ''}`} id="opinions">
