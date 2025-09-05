@@ -1,0 +1,136 @@
+.car-model {
+  .tabs {
+    width: 100%;
+  }
+
+  .tab-menu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 equal columns */
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+
+    li {
+      cursor: pointer;
+      padding: 20px;
+      min-height: 60px;
+      // border: 1px solid #ddd;
+      background: #d7d2d2;
+      transition: all 0.3s ease;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-size: 16px;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: $white;
+      letter-spacing: 1px;
+
+      /* Remove border overlap between neighbors */
+      &:not(:last-child) {
+        border-right: none;
+      }
+
+      /* Rounded only at the ends */
+      &:first-child {
+        border-radius: 0 0 0 5px;
+      }
+      &:last-child {
+        border-radius: 0 0 5px 0;
+      }
+      &:not(:first-child):not(:last-child) {
+        border-radius: 0;
+      }
+
+      &.active {
+        background: red;
+        color: white;
+        border-color: red;
+      }
+    }
+  }
+
+  .tab-content-options {
+    .compare {
+      width: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+
+      &__header {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-top: 20px;
+        border: 1px solid #ddd; /* Outer border */
+      }
+
+      &__features {
+        margin-bottom: 2rem;
+
+        .feature-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 0;
+          background-color: #ddd;
+          margin-bottom: 1px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .feature-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .feature-col:before {
+          content: attr(data-label);
+          font-weight: bold;
+          display: inline-block;
+          width: 120px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+
+  .car-list-container {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  /* Left: car list */
+  .list {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .list-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 6px;
+    display: block;
+  }
+
+  /* Right: ads */
+  .ads {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .ad-box {
+    background: #f4f4f4;
+    border: 1px solid #ccc;
+    height: 800px; /* adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    color: #555;
+  }
+}

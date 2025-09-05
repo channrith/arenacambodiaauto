@@ -4,7 +4,7 @@ import Navbar from "../_components/Layout/Navbar";
 import PostList from "../_components/PostList";
 import Hero from "../_components/Layout/Hero";
 
-export default function Home() {
+export default function News() {
     const posts = [
         {
             id: 1,

@@ -6,20 +6,11 @@
   &__top {
     background-color: #f4f4f4;
     padding: 15px;
-  
-    .producer {
+
+    .maker {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(3, 1fr); /* 3 equal-width columns */
       gap: 10px;
-
-      &__list {
-        list-style: none;
-        padding: 0;
-      }
-
-      &__item {
-        margin-bottom: 10px;
-      }
 
       &__link {
         display: block;
@@ -29,7 +20,8 @@
         border-radius: 3px;
         transition: background-color 0.2s ease, color 0.2s ease;
 
-        &:hover {
+        &:hover,
+        &.active {
           background-color: $red;
           color: $white;
         }

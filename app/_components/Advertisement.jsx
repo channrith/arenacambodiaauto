@@ -10,6 +10,7 @@ const Advertisement = ({ image, alt, link, height = 150, width = 800 }) => {
                 width={width}
                 height={height}
                 priority
+                unoptimized
             />
         </div>
     );

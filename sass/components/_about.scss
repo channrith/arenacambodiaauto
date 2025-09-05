@@ -1,0 +1,46 @@
+.about {
+  .about-text p {
+    margin-bottom: 15px;
+    line-height: 1.6;
+  }
+
+  .contact-section {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #fafafa;
+    border-radius: 5px;
+  }
+
+  .three-image-layout {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .top-images {
+    display: flex;
+    gap: 10px;
+  }
+  .top-images img,
+  .bottom-image img {
+    width: 100%;
+    border-radius: 5px;
+    object-fit: cover;
+  }
+  .top-images img {
+    height: 400px;
+  }
+  .bottom-image img {
+    height: 450px;
+  }
+
+  @media (max-width: 768px) {
+    .top-images {
+      flex-direction: column;
+    }
+    .top-images img {
+      height: auto;
+    }
+  }
+}

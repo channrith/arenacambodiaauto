@@ -1,45 +1,56 @@
-import Image from "next/image";
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import Advertisement from "../Advertisement";
 
 const Sidebar = () => {
+    const pathname = usePathname();
+    const makers = [
+        { path: "/make/toyota", label: "Toyota" },
+        { path: "/make/ford", label: "Ford" },
+        { path: "/make/honda", label: "Honda" },
+        { path: "/make/chevrolet", label: "Chevrolet" },
+        { path: "/make/bmw", label: "BMW" },
+        { path: "/make/mercedes-benz", label: "Mercedes-Benz" },
+        { path: "/make/hyundai", label: "Hyundai" },
+        { path: "/make/kia", label: "Kia" },
+        { path: "/make/nissan", label: "Nissan" },
+        { path: "/make/volkswagen", label: "Volkswagen" },
+        { path: "/make/subaru", label: "Subaru" },
+        { path: "/make/mazda", label: "Mazda" },
+        { path: "/make/audi", label: "Audi" },
+        { path: "/make/lexus", label: "Lexus" },
+        { path: "/make/jeep", label: "Jeep" },
+        { path: "/make/dodge", label: "Dodge" },
+        { path: "/make/volvo", label: "Volvo" },
+        { path: "/make/tesla", label: "Tesla" },
+        { path: "/make/peugeot", label: "Peugeot" },
+        { path: "/make/fiat", label: "Fiat" },
+        { path: "/make/renault", label: "Renault" },
+        { path: "/make/jaguar", label: "Jaguar" },
+        { path: "/make/porsche", label: "Porsche" },
+        { path: "/make/land-rover", label: "Land Rover" },
+    ];
+
     return (
         <aside className="sidebar">
             <div className="sidebar__top">
                 <h3>Car Producers</h3>
 
-                <div className="producer">
-                    <ul className="producer__list">
-                        <li className="producer__item"><a className="producer__link" href="#">Toyota</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Ford</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Honda</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Chevrolet</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">BMW</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Mercedes-Benz</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Hyundai</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Kia</a></li>
-                    </ul>
-
-                    <ul className="producer__list">
-                        <li className="producer__item"><a className="producer__link" href="#">Nissan</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Volkswagen</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Subaru</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Mazda</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Audi</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Lexus</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Jeep</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Dodge</a></li>
-                    </ul>
-
-                    <ul className="producer__list">
-                        <li className="producer__item"><a className="producer__link" href="#">Volvo</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Tesla</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Peugeot</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Fiat</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Renault</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Jaguar</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Porsche</a></li>
-                        <li className="producer__item"><a className="producer__link" href="#">Land Rover</a></li>
-                    </ul>
+                <div className="maker">
+                    {makers.map((maker, index) => {
+                        const isActive = pathname === maker.path || pathname.startsWith(`${maker.path}/`);
+                        return (
+                            <Link
+                                key={index}
+                                href={maker.path}
+                                className={`maker__link ${isActive ? 'active' : ''}`}
+                            >
+                                {maker.label}
+                            </Link>
+                        )
+                    })}
                 </div>
             </div>
 
