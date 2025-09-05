@@ -1,10 +1,11 @@
-import '@fortawesome/fontawesome-svg-core/styles.css';
-import { config } from '@fortawesome/fontawesome-svg-core';
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
 config.autoAddCss = false;
 
 import "./../sass/main.scss";
 import Footer from "./_components/Layout/Footer";
 import Header from "./_components/Layout/Header";
+import Sidebar from "./_components/Layout/Sidebar";
 
 export const metadata = {
   title: "Create Next App",

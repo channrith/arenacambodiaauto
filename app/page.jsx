@@ -1,7 +1,9 @@
 import VideoList from "./_components/VideoList";
-import Sidebar from "./_components/Layout/Sidebar";
 import Advertisement from "./_components/Advertisement";
 import PostList from "./_components/PostList";
+import Sidebar from "./_components/Layout/Sidebar";
+import Link from "next/link";
+import Navbar from "./_components/Layout/Navbar";
 
 export default function Home() {
   const posts = [
@@ -39,15 +41,19 @@ export default function Home() {
 
   return (
     <main className="main">
-      <Sidebar />
+      <Navbar homepage="true" />
+      <div className="hero"></div>
       <div className="main__container">
-        <VideoList videos={videos} />
-        <Advertisement
-          image="/ads/car-sale.jpg"
-          alt="Your ad could be here!"
-          link="https://arenacambodiaauto.com/promo"
-        />
-        <PostList posts={posts} />
+        <Sidebar />
+        <div className="content">
+          <VideoList videos={videos} />
+          <Advertisement
+            image="/image/EN-Euro.gif"
+            alt="Your ad could be here!"
+            link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+          />
+          <PostList posts={posts} />
+        </div>
       </div>
     </main>
   );
