@@ -24,6 +24,11 @@
     display: block;
   }
 
+  .hero-item {
+    position: relative;
+    height: 100%;
+  }
+
   .large-image img {
     height: 100%;
     object-fit: cover;
@@ -33,11 +38,11 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-  }
 
-  .small-images img {
-    height: 100%;
-    object-fit: cover;
+    img {
+      height: 100%;
+      object-fit: cover;
+    }
   }
 }
 

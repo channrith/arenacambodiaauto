@@ -42,7 +42,9 @@ export default function Home() {
   return (
     <main className="main">
       <Navbar homepage="true" />
-      <div className="hero"></div>
+      <div className="hero">
+        <div className="banner__title">Peugeot e-3008 GT Electric review</div>
+      </div>
       <div className="main__container">
         <Sidebar />
         <div className="content">
