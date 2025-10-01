@@ -19,7 +19,8 @@
     "@fortawesome/react-fontawesome": "^3.0.2",
     "next": "^14.2.32",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "sharp": "^0.34.4"
   },
   "devDependencies": {
     "sass": "^1.92.0"
