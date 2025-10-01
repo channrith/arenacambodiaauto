@@ -1,38 +1,59 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Hero = () => {
+    const posts = [
+        {
+            id: 1,
+            title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+            slug: "ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
+            link: "/news/ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
+            image: "/image/news/files-1759315271889-830589414.jpg",
+        },
+        {
+            id: 2,
+            title: "Alpine reveals the A390 electric fastback",
+            image: "/image/alpine-reveals-the-A390-electric-fastback.jpg",
+        },
+        {
+            id: 3,
+            title: "Alfa Romeo Junior Elettrica Veloce real world range test",
+            image: "/image/alfa-romeo-junior-elettrica-veloce-real-world-range-test.jpg",
+        }
+    ];
+
     return (
         <div className="image-grid">
             <div className="large-image hero-item">
                 <Image
-                    src="/image/1-Peugeot-e-3008-2024-review.jpg"
+                    src={posts[0].image}
                     alt="Large"
                     width="800"
                     height="400"
                     priority
                 />
-                <div className="banner__title">Peugeot e-3008 GT Electric review</div>
+                <div className="banner__title"><Link href={posts[0].link}>{posts[0].title}</Link></div>
             </div>
             <div className="small-images">
                 <div className="hero-item">
                     <Image
-                        src="/image/alpine-reveals-the-A390-electric-fastback.jpg"
+                        src={posts[1].image}
                         alt="Top Small"
                         width="800"
                         height="400"
                         priority
                     />
-                    <div className="banner__title">Alpine reveals the A390 electric fastback</div>
+                    <div className="banner__title">{posts[1].title}</div>
                 </div>
                 <div className="hero-item">
                     <Image
-                        src="/image/alfa-romeo-junior-elettrica-veloce-real-world-range-test.jpg"
+                        src={posts[2].image}
                         alt="Bottom Small"
                         width="800"
                         height="400"
                         priority
                     />
-                    <div className="banner__title">Alfa Romeo Junior Elettrica Veloce real world range test</div>
+                    <div className="banner__title">{posts[2].title}</div>
                 </div>
             </div>
         </div>

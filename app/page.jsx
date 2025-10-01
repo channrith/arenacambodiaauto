@@ -4,14 +4,23 @@ import PostList from "./_components/PostList";
 import Sidebar from "./_components/Layout/Sidebar";
 import Link from "next/link";
 import Navbar from "./_components/Layout/Navbar";
+import Image from "next/image";
 
 export default function Home() {
+  const special = {
+    id: 1,
+    title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+    link: "/news/ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
+    image: "/image/news/files-1759315271889-830589414.jpg",
+  };
+
   const posts = [
     {
       id: 1,
-      title: "Volkswagen confirms electric GTI details",
+      title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+      slug: "ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
       excerpt:
-        "Volkswagen plans to launch a family of electric GTI models, starting with the ID.2 GTI and a future electric Golf GTI.",
+        "នៅក្នុងពេលដែលក្រុមហ៊ុនជាច្រើនក្នុងវិស័យយានយន្តអគ្គិសនីនៅតែព្យាយាមស្វែងរកវិធីសាស្រ្តដើម្បីធ្វើឲ្យរថយន្តរបស់ខ្លួនកាន់តែមានភាពទាក់ទាញ ក្រុមហ៊ុន Huawei ហាក់ដូចជាបានដើរទៅមុខមួយលានជំហានរួចទៅហើយ។",
       image: "/image/arenaev_001.jpg",
     },
     {
@@ -42,8 +51,15 @@ export default function Home() {
   return (
     <main className="main">
       <Navbar homepage="true" />
-      <div className="hero">
-        <div className="banner__title">Peugeot e-3008 GT Electric review</div>
+      <div className="banner height-500">
+        <Image
+          src={special.image}
+          alt={special.title}
+          fill
+          className="banner__image"
+          priority
+        />
+        <div className="banner__title"><Link href={special.link}>{special.title}</Link></div>
       </div>
       <div className="main__container">
         <Sidebar />
