@@ -8,14 +8,16 @@ export default function News() {
     const posts = [
         {
             id: 1,
-            title: "Volkswagen confirms electric GTI details",
+            title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+            slug: "ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
             excerpt:
-                "Volkswagen plans to launch a family of electric GTI models, starting with the ID.2 GTI and a future electric Golf GTI.",
+                "នៅក្នុងពេលដែលក្រុមហ៊ុនជាច្រើនក្នុងវិស័យយានយន្តអគ្គិសនីនៅតែព្យាយាមស្វែងរកវិធីសាស្រ្តដើម្បីធ្វើឲ្យរថយន្តរបស់ខ្លួនកាន់តែមានភាពទាក់ទាញ ក្រុមហ៊ុន Huawei ហាក់ដូចជាបានដើរទៅមុខមួយលានជំហានរួចទៅហើយ។",
             image: "/image/arenaev_001.jpg",
         },
         {
             id: 2,
             title: "Another exciting EV announcement",
+            slug: "another-exciting-ev-announcement",
             excerpt:
                 "Car makers continue to push EV innovation with new models and battery technology improvements.",
             image: "/image/arenaev_001.jpg",
@@ -23,6 +25,7 @@ export default function News() {
         {
             id: 3,
             title: "Tesla updates Model S",
+            slug: "tesla-updates-model-s",
             excerpt:
                 "Tesla introduces performance and interior upgrades to keep the Model S competitive in the luxury EV market.",
             image: "/image/arenaev_001.jpg",
@@ -30,6 +33,7 @@ export default function News() {
         {
             id: 4,
             title: "Hyundai Ioniq 6 gains traction",
+            slug: "hyundai-ioniq-6-gains-traction",
             excerpt:
                 "Hyundai's Ioniq 6 is praised for its design and range, strengthening the brand’s EV portfolio.",
             image: "/image/arenaev_001.jpg",

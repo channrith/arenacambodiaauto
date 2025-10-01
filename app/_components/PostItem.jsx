@@ -12,7 +12,7 @@ const PostItem = ({ post }) => {
                 className="rounded-md mr-4 object-cover"
             />
             <div>
-                <h4 className="text-lg font-bold"><Link href={`/news/${post.id}`}>{post.title}</Link></h4>
+                <h4 className="text-lg font-bold"><Link href={`/news/${post.slug}`}>{post.title}</Link></h4>
                 <p className="text-gray-700">{post.excerpt}</p>
             </div>
         </div>
