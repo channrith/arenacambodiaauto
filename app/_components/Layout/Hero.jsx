@@ -19,8 +19,10 @@ const Hero = () => {
         },
         {
             id: 3,
-            title: "Alfa Romeo Junior Elettrica Veloce real world range test",
-            image: "/image/alfa-romeo-junior-elettrica-veloce-real-world-range-test.jpg",
+            title: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
+            slug: "mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3",
+            link: "/news/mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3",
+            image: "/image/news/file-1759401962173-711743282.jpg",
         }
     ];
 
@@ -55,7 +57,7 @@ const Hero = () => {
                         height="400"
                         priority
                     />
-                    <div className="banner__title">{posts[2].title}</div>
+                    <div className="banner__title"><Link href={posts[2].link}>{posts[2].title}</Link></div>
                 </div>
             </div>
         </div>

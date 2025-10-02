@@ -93,10 +93,71 @@ export default function New({ params }) {
 គួរបញ្ជាក់ថា នៅក្នុងឆ្នាំ ២០២៤ ការនាំចេញរបស់រថយន្ត BYD មានចំនួនតិចជាង ១០% នៃការនាំចេញសរុបរបស់ខ្លួន។
                     </p>`
         },
-        "arenaev-0003": {
-            title: "Arena EV Launch Event",
-            image: "/image/arenaev_0003.jpg",
-            content: "Coverage of the Arena EV launch event."
+        "mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3": {
+            title: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
+            featured_image: {
+                url: "/image/news/file-1759401962173-711743282.jpg",
+                alt: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
+                thumbnail: "/image/news/resized-file-1759401797655-925493902.jpg"
+            },
+            author: {
+                id: "",
+                name: "ArenaEV",
+                avatar: "",
+                bio: "Senior Software Engineer",
+                slug: ""
+            },
+            translator: {
+                type: "human",
+                name: "ផាកឃឺ",
+                id: "",
+                verified: true
+            },
+            content: `<p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        រថយន្តអគ្គិសនីស៊េរីចុងក្រោយបំផុតរបស់ក្រុមហ៊ុន Mazda គឺម៉ូដែល EZ-60 ទើបតែត្រូវបានដាក់បង្ហាញនៅប្រទេសចិន ហើយនឹងបង្ហាញខ្លួនជាសកលនៅឆ្នាំ ២០២៦ ក្រោមឈ្មោះផ្សេងគឺ Mazda CX-6e។ រថយន្ត SUV អគ្គិសនីទំហំមធ្យមនេះ និងចូលទីផ្សារប្រកួតប្រជែងយ៉ាងខ្លាំងក្លាជាមួយនឹងយុទ្ធសាស្ត្រតម្លៃដ៏ទាក់ទាញ ជាមួយនិងជម្រើសប្រភេទម៉ាស៊ីនពីរផ្សេងគ្នា ដែលផ្តល់ជម្រើសទៅដល់អ្នកទិញដែលជាគូប្រកួតប្រជែងជាច្រើនគ្មានដូច។
+                    </p>
+
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        រថយន្ត EZ-60 គឺជា EV ជំនាន់ថ្មីទី ២ ពីក្រុមហ៊ុន Mazda ដែលបានបង្ហាញខ្លួននៅក្នុងប្រទេសចិន បន្ទាប់ពីរថយន្ត Mazda EZ-6។ រថយន្តទាំងពីរនេះ គឺជាលទ្ធផលនៃភាពជាដៃគូជាមួយក្រុមហ៊ុនផលិតរថយន្តចិន Changan ហើយត្រូវបានសាងសង់នៅលើស្ថាបត្យកម្ម EPA របស់ខ្លួន។ កិច្ចសហការនេះអនុញ្ញាតឱ្យក្រុមហ៊ុន Mazda ផ្តល់ជូនរថយន្ត SUV នេះជាពីរប្រភេទ៖ ម៉ូដែលអគ្គិសនីសុទ្ធ និងម៉ូដែល 
+                    </p>
+
+                    <img src="/image/news/file-1759401720307-219201169.jpg" alt="Range-extended Hybrid" style="width:100%;max-width:1200px;height: auto;border-radius:6px;display:block;" />
+                    <strong>Range-extended Hybrid។</strong>
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-top:15px;margin-bottom:20px;text-align:left;">
+                        សម្រាប់ទីផ្សារប្រទេសចិន វាមានតម្លៃគឺទាបគួរឱ្យកត់សម្គាល់ ដោយមានចន្លោះពី  119,900 យន់ ទៅ 160,900 យន់។ តាមអត្រាប្តូរប្រាក់បច្ចុប្បន្ន វាមានតម្លៃប្រហែល  14,300 អឺរ៉ូ ទៅ 19,300 អឺរ៉ូ និង 16,700ដុល្លា ទៅ 22,600ដុល្លា។ តម្លៃទីផ្សារអន្តរជាតិនឹងខុសគ្នាពិតណាស់ ប៉ុន្តែតម្លៃចាប់ផ្តើមនេះគឺមានភាពទាក់ទាញគ្រប់គ្រាន់ដើម្បីទាក់ទាញចំណាប់អារម្មណ៍របស់អតិថិជនគ្រប់រូប ដោយមិនគិតពីប្រទេសដែលពួកគេរស់នៅឡើយ។
+                    </p>
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        បើក្រឡេកមើលរូបរាងខាងក្រៅ រថយន្ត SUV នេះមិនអាចច្រឡំឡើយថាជារថយន្ត Mazda។ វាមានទស្សនៈរចនាដ៏ពិសេសរបស់ម៉ាកយីហោនេះ ដែលត្រូវបានកែសម្រួលសម្រាប់យុគសម័យរថយន្តអគ្គិសនី EV។ ផ្នែកខាងមុខមានClosed-off grille common ដែលជារឿងធម្មតាចំពោះរថយន្តអគ្គិសនីជាច្រើន ប៉ុន្តែមានភាព
+                    </p>
+
+                    <img src="/image/news/file-1759402010296-878716079.jpg" alt="Full Width Banner" style="width:100%;max-width:1200px;height: auto;border-radius:6px;display:block;margin-bottom:15px;" />
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        ប្លែកត្រង់មាននិមិត្តសញ្ញា Mazda ដែលអាចបញ្ចេញពន្លឺបាន។ ភ្លើងបំភ្លឺពេលថ្ងៃ (DRL) ស្តើង និងចង្កៀងមុខដែលញែកគ្នា ផ្តល់ឱ្យវានូវរូបរាងបែបទំនើប និងទាន់សម័យ។
+                    </p>
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        ជាមួយនឹងប្រវែង ៤,៨៥០ ម.ម ទទឹង ១,៩៣៥ ម.ម និងកម្ពស់ ១,៦២០ ម.ម ព្រមទាំង wheelbase ២,៩០២ ម.ម វិមាត្ររបស់រថយន្តនេះដាក់វាចូលក្នុងប្រភេទទំហំមធ្យម។ លក្ខណៈពិសេសមួយចំនួនទៀតដូចជា ដៃទ្វារលាក់ កញ្ចក់ចំហៀងអេឡិចត្រូនិច និងកង់ទំហំ ១៩ អ៊ីញស្តង់ដារ (ជាមួយនឹងជម្រើសកង់ទំហំ ២១ អ៊ីញ) ធ្វើឱ្យរូបរាងទាំងមូលមានភាពស្រស់ស្អាត និងទាន់សម័យ។
+                    </p>
+
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        អតិថិជនអាចជ្រើសរើសប្រភេទម៉ាស៊ីនដែលសាកសមបំផុតទៅនឹងតម្រូវការរបស់ពួកគេ។ ម៉ូដែលអគ្គិសនីសុទ្ធ គឺជាប្រភេទ EV បើកបរដោយកង់ក្រោយដែលប្រើម៉ូទ័រទំហំ ១៩០ kW តែមួយ។ វាប្រើអាគុយ Lithium-iron-phosphate (LFP) ទំហំ ៧៧,៩៤ kWh ដែលមានចម្ងាយធ្វើដំណើរ ៦០០ គីឡូម៉ែត្រ ផ្អែកលើការសាកល្បង CLTC របស់ប្រទេសចិន។
+                    </p>
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        ជម្រើសទីពីរគឺប្រភេទ Range-extended EV ដែលប្រើម៉ូទ័រអគ្គិសនីទំហំ ១៩០ kW ដូចគ្នា ប៉ុន្តែភ្ជាប់មកជាមួយអាគុយទំហំតូចជាងគឺ ៣១,៧៣ kWh និងម៉ាស៊ីនសាំងទំហំ ១,៥ លីត្រ ដែលដើរតួជាម៉ាស៊ីនភ្លើងតែប៉ុណ្ណោះ។ ម៉ូដែលនេះផ្តល់នូវចម្ងាយបើកបរអគ្គិសនីសុទ្ធ ២០០ គីឡូម៉ែត្រ មុនពេលម៉ាស៊ីនភ្លើងសាំងដំណើរការដើម្បីបញ្ចូលថាមពលអាគុយឡើងវិញ ដែលពង្រីកចម្ងាយសរុបរបស់វាដល់ជាង ១,០០០ គីឡូម៉ែត្រ។
+                    </p>
+
+                    <img src="/image/news/file-1759402045246-362728843.jpg" alt="Full Width Banner" style="width:100%;max-width:1200px;height: auto;border-radius:6px;display:block;margin-bottom:15px;" />
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        ផ្ទៃខាងក្នុងរបស់ EZ-60 មានភាពខុសប្លែកគ្នាយ៉ាងខ្លាំងពីកាប៊ីនបែបប្រពៃណីរបស់ Mazda ដោយផ្អែកលើបច្ចេកវិទ្យាទំនើប។ ចំណុចកណ្តាលគឺអេក្រង់កណ្តាលទំហំ ២៦.៤៥ អ៊ីញប្រភេទ 5K ដែលដំណើរការដោយ CPU 4nm ដ៏ទំនើបសម្រាប់ដំណើរការរហ័ស។ មុខងារ Augmented Reality Head-Up Display (AR-HUD) ទំហំ ៥០ អ៊ីញ គឺជាស្តង់ដារ ដែលបង្ហាញព័ត៌មានសំខាន់ៗដោយផ្ទាល់លើកញ្ចក់ខាងមុខ។
+                    </p>
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        សម្រាប់អតិថិជនដែលចង់បានបទពិសោធន៍បែបអនាគតជាងនេះ មុខងារ 3D-HUD ទំហំ ១០០ អ៊ីញ អាចរកបានជាជម្រើសបន្ថែម។ ភាពងាយស្រួលត្រូវបានផ្តល់ជូនដោយកៅអីខាងមុខ "zero-gravity" ដែលផ្តល់មុខងារកម្តៅ ខ្យល់ចេញចូល និងម៉ាស្សា។ ប្រព័ន្ធសំឡេង premium ទំហំ ២៣ ឧបករណ៍បំពងសម្លេង ជាមួយនឹងការគាំទ្រ Dolby Atmos ផ្តល់នូវបទពិសោធន៍ស្តាប់ដ៏អស្ចារ្យ។
+                    </p>
+
+                    <img src="/image/news/file-1759402024247-141076885.jpg" alt="Full Width Banner" style="width:100%;max-width:1200px;height: auto;border-radius:6px;display:block;margin-bottom:15px;" />
+                    <p style="font-size:16px;color:#333;line-height:1.5;margin-bottom:20px;text-align:left;">
+                        ដូចទៅនឹងរថយន្ត EV ថ្មីៗភាគច្រើននៅក្នុងប្រទេសចិន រថយន្ត EZ-60 ភ្ជាប់មកជាមួយបច្ចេកវិទ្យាជំនួយអ្នកបើកបរ។ Radar និងកាមេរ៉ាជាច្រើនជួយវាផ្តល់នូវមុខងារស្វយ័តកម្រិត ២ រួមទាំង Adaptive Cruise Control, Lane-Keeping Assist និង Automated Parking។ ប្រព័ន្ធនេះក៏គាំទ្រការបើកបរជំនួយដោយnavigation-assisted driving ទាំងនៅលើផ្លូវហាយវេ និងផ្លូវក្នុងទីក្រុងផងដែរ។
+                    </p>
+                    <img src="/image/news/file-1759402133296-172923127.jpg" alt="Full Width Banner" style="width:100%;max-width:1200px;height: auto;border-radius:6px;display:block;margin-bottom:15px;" />`,
         }
     };
 

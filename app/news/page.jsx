@@ -34,28 +34,15 @@ export default function News() {
         },
         {
             id: 3,
-            title: "Tesla updates Model S",
-            slug: "tesla-updates-model-s",
-            link: "/news/tesla-updates-model-s",
+            title: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
+            slug: "mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3",
+            link: "/news/mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3",
             excerpt:
-                "Tesla introduces performance and interior upgrades to keep the Model S competitive in the luxury EV market.",
+                "រថយន្តអគ្គិសនីស៊េរីចុងក្រោយបំផុតរបស់ក្រុមហ៊ុន Mazda គឺម៉ូដែល EZ-60 ទើបតែត្រូវបានដាក់បង្ហាញនៅប្រទេសចិន ហើយនឹងបង្ហាញខ្លួនជាសកលនៅឆ្នាំ ២០២៦ ក្រោមឈ្មោះផ្សេងគឺ Mazda CX-6e។ រថយន្ត SUV អគ្គិសនីទំហំមធ្យមនេះ និងចូលទីផ្សារប្រកួតប្រជែងយ៉ាងខ្លាំងក្លាជាមួយនឹងយុទ្ធសាស្ត្រតម្លៃដ៏ទាក់ទាញ ជាមួយនិងជម្រើសប្រភេទម៉ាស៊ីនពីរផ្សេងគ្នា ដែលផ្តល់ជម្រើសទៅដល់អ្នកទិញដែលជាគូប្រកួតប្រជែងជាច្រើនគ្មានដូច។",
             featured_image: {
-                url: "/image/arenaev_001.jpg",
-                alt: "Tesla updates Model S",
-                thumbnail: "/image/arenaev_001.jpg"
-            }
-        },
-        {
-            id: 4,
-            title: "Hyundai Ioniq 6 gains traction",
-            slug: "hyundai-ioniq-6-gains-traction",
-            link: "/news/hyundai-ioniq-6-gains-traction",
-            excerpt:
-                "Hyundai's Ioniq 6 is praised for its design and range, strengthening the brand’s EV portfolio.",
-            featured_image: {
-                url: "/image/arenaev_001.jpg",
-                alt: "Hyundai Ioniq 6 gains traction",
-                thumbnail: "/image/arenaev_001.jpg"
+                url: "/image/news/file-1759401962173-711743282.jpg",
+                alt: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
+                thumbnail: "/image/news/resized-file-1759401797655-925493902.jpg"
             }
         },
     ];
