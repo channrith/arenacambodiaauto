@@ -5,7 +5,7 @@ const PostItem = ({ post }) => {
     return (
         <div className="blog-post-item flex mb-5">
             <Image
-                src={post.image}
+                src={post.featured_image.thumbnail}
                 alt={post.title}
                 width={240}
                 height={160}

@@ -12,7 +12,11 @@ export default function News() {
             slug: "ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
             excerpt:
                 "នៅក្នុងពេលដែលក្រុមហ៊ុនជាច្រើនក្នុងវិស័យយានយន្តអគ្គិសនីនៅតែព្យាយាមស្វែងរកវិធីសាស្រ្តដើម្បីធ្វើឲ្យរថយន្តរបស់ខ្លួនកាន់តែមានភាពទាក់ទាញ ក្រុមហ៊ុន Huawei ហាក់ដូចជាបានដើរទៅមុខមួយលានជំហានរួចទៅហើយ។",
-            image: "/image/arenaev_001.jpg",
+            featured_image: {
+                url: "/image/news/files-1759315271889-830589414.jpg",
+                alt: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+                thumbnail: "/image/news/file-1759379956137-350960102.jpg"
+            }
         },
         {
             id: 2,
@@ -20,7 +24,11 @@ export default function News() {
             slug: "another-exciting-ev-announcement",
             excerpt:
                 "Car makers continue to push EV innovation with new models and battery technology improvements.",
-            image: "/image/arenaev_001.jpg",
+            featured_image: {
+                url: "/image/arenaev_001.jpg",
+                alt: "Another exciting EV announcement",
+                thumbnail: "/image/arenaev_001.jpg"
+            }
         },
         {
             id: 3,
@@ -28,7 +36,11 @@ export default function News() {
             slug: "tesla-updates-model-s",
             excerpt:
                 "Tesla introduces performance and interior upgrades to keep the Model S competitive in the luxury EV market.",
-            image: "/image/arenaev_001.jpg",
+            featured_image: {
+                url: "/image/arenaev_001.jpg",
+                alt: "Tesla updates Model S",
+                thumbnail: "/image/arenaev_001.jpg"
+            }
         },
         {
             id: 4,
@@ -36,7 +48,11 @@ export default function News() {
             slug: "hyundai-ioniq-6-gains-traction",
             excerpt:
                 "Hyundai's Ioniq 6 is praised for its design and range, strengthening the brand’s EV portfolio.",
-            image: "/image/arenaev_001.jpg",
+            featured_image: {
+                url: "/image/arenaev_001.jpg",
+                alt: "Hyundai Ioniq 6 gains traction",
+                thumbnail: "/image/arenaev_001.jpg"
+            }
         },
     ];
 
