@@ -51,7 +51,7 @@ export default function Home() {
       featured_image: {
         url: "/image/news/file-1759401962173-711743282.jpg",
         alt: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
-        thumbnail: "/image/news/resized-file-1759401797655-925493902.jpg"
+        thumbnail: "/image/news/resized-file-1759420749400-88834351.jpg"
       }
     },
   ];
