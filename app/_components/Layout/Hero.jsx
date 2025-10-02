@@ -12,8 +12,10 @@ const Hero = () => {
         },
         {
             id: 2,
-            title: "Alpine reveals the A390 electric fastback",
-            image: "/image/alpine-reveals-the-A390-electric-fastback.jpg",
+            title: "រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន BYD រំពឹងថាការលក់នៅក្រៅប្រទេសនឹងកើនឡើងដល់ ២០% នៃការលក់សរុបនៅឆ្នាំ ២០២៥។",
+            slug: "រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន-byd-រំពឹងថាការលក់នៅក្រៅប្រទេសនឹងកើនឡើងដល់-២០%-នៃការលក់សរុបនៅឆ្នាំ-២០២៥។-2",
+            link: "/news/រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន-byd-2",
+            image: "/image/news/resized-file-1759394227829-921924698.jpg",
         },
         {
             id: 3,
@@ -43,7 +45,7 @@ const Hero = () => {
                         height="400"
                         priority
                     />
-                    <div className="banner__title">{posts[1].title}</div>
+                    <div className="banner__title"><Link href={posts[1].link}>{posts[1].title}</Link></div>
                 </div>
                 <div className="hero-item">
                     <Image
