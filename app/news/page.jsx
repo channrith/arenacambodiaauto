@@ -15,7 +15,7 @@ export default function News() {
             featured_image: {
                 url: "/image/news/files-1759315271889-830589414.jpg",
                 alt: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
-                thumbnail: "/image/news/file-1759379956137-350960102.jpg"
+                thumbnail: "/image/news/resized-file-1759388078259-637898202.jpg"
             }
         },
         {
