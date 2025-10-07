@@ -7,11 +7,11 @@ const Navbar = ({ homepage }) => {
     const pathname = usePathname();
 
     const navItems = [
-        { path: "/", label: "Home" },
-        { path: "/news", label: "News" },
-        { path: "/reviews", label: "Reviews" },
-        { path: "/compare", label: "Compare" },
-        { path: "/about", label: "About" }
+        { path: "/", label: "ទំព័រមុខ" },
+        { path: "/news", label: "ព័ត៍មាន" },
+        { path: "/reviews", label: "វីឌីអូរ" },
+        { path: "/compare", label: "ការប្រៀបធៀប" },
+        { path: "/about", label: "អំពីយើង" }
     ];
 
     return (

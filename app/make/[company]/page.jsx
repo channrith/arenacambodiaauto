@@ -24,8 +24,8 @@ export default function Make() {
                     <div className="car-maker">
                         <div className="tabs">
                             <ul className="tab-menu">
-                                <li id="local" className={activeTab === 'local' ? 'active' : ''} data-tab="local" onClick={() => handleTabClick('local')}>Local</li>
-                                <li id="global" className={activeTab === 'global' ? 'active' : ''} data-tab="global" onClick={() => handleTabClick('global')}>Global</li>
+                                <li id="local" className={activeTab === 'local' ? 'active' : ''} data-tab="local" onClick={() => handleTabClick('local')}>ក្នុងស្រុក </li>
+                                <li id="global" className={activeTab === 'global' ? 'active' : ''} data-tab="global" onClick={() => handleTabClick('global')}>ក្រៅស្រុក</li>
                             </ul>
 
                             <div className={`tab-content ${activeTab === 'local' ? 'active' : ''}`} id="local">

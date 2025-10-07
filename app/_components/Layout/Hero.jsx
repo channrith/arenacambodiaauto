@@ -47,7 +47,7 @@ const Hero = () => {
                         height="400"
                         priority
                     />
-                    <div className="banner__title"><Link href={posts[1].link}>{posts[1].title}</Link></div>
+                    <div className="banner__title font-size-18"><Link href={posts[1].link}>{posts[1].title}</Link></div>
                 </div>
                 <div className="hero-item">
                     <Image
@@ -57,7 +57,7 @@ const Hero = () => {
                         height="400"
                         priority
                     />
-                    <div className="banner__title"><Link href={posts[2].link}>{posts[2].title}</Link></div>
+                    <div className="banner__title font-size-18"><Link href={posts[2].link}>{posts[2].title}</Link></div>
                 </div>
             </div>
         </div>
