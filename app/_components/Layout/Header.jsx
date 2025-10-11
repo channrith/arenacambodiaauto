@@ -10,7 +10,7 @@ const Header = () => {
             <div className="header__top">
                 <div className="logo">
                     <Link href="/">
-                        <Image src="/image/logo/Header.png" width="220" height="45" alt="Arena Cambodia Auto" />
+                        <Image src="https://cdn.arenacambodiaauto.com/1760172579540-594432548.png" width="220" height="45" alt="Arena Cambodia Auto" />
                     </Link>
                 </div>
 
