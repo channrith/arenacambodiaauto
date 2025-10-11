@@ -10,7 +10,7 @@ const Footer = () => {
             <div className="footer__top">
                 <div className="footer__logo">
                     <Link href="/">
-                        <Image src="https://cdn.arenacambodiaauto.com/1760172838376-299464275.png" width="160" height="40" alt="Arena Cambodia Auto" />
+                        <Image src="/image/logo/Footer-logo-AC.png" width="160" height="40" alt="Arena Cambodia Auto" />
                     </Link>
                 </div>
 
