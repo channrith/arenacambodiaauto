@@ -1,7 +1,26 @@
+import React, { useState } from "react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const CompareHeader = ({ products, onSearch }) => {
+    const displayCards = [products[0], products[1] || { title: "", image: "" }];
+
+    // Keep local input state for each card
+    const [searchInputs, setSearchInputs] = useState(["", ""]);
+
+    const handleKeyDown = (index, e) => {
+        if (e.key === "Enter") {
+            onSearch(index, searchInputs[index]);
+        }
+    };
+
+    const handleChange = (index, value) => {
+        const updatedInputs = [...searchInputs];
+        updatedInputs[index] = value;
+        setSearchInputs(updatedInputs);
+    };
+
     return (
         <div className="compare__header">
             {products.map((product, index) => (
@@ -11,8 +30,9 @@ const CompareHeader = ({ products, onSearch }) => {
                     <input
                         type="text"
                         placeholder="Search car..."
-                        value={product.search || ""}
-                        onChange={(e) => onSearch(index, e.target.value)}
+                        value={searchInputs[index]}
+                        onChange={(e) => handleChange(index, e.target.value)}
+                        onKeyDown={(e) => handleKeyDown(index, e)}
                     />
 
                     <p className="card__note">
@@ -34,4 +54,4 @@ const CompareHeader = ({ products, onSearch }) => {
     );
 };
 
-export default CompareHeader ;
+export default CompareHeader;
