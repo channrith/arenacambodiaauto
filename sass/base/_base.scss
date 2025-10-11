@@ -1,14 +1,15 @@
 @font-face {
-  font-family: 'KhmerOSBTB';
-  src: url('/font/KhmerOSMacOSX/KhmerOSBattambang-Regular.ttf') format('truetype');
+  font-family: "KhmerOSBTB";
+  src: url("/font/KhmerOSMacOSX/KhmerOSBattambang-Regular.ttf")
+    format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'KhmerOSBTBBold';
-  src: url('/font/KhmerOSMacOSX/KhmerOSBattambang-Bold.ttf') format('truetype');
+  font-family: "KhmerOSBTBBold";
+  src: url("/font/KhmerOSMacOSX/KhmerOSBattambang-Bold.ttf") format("truetype");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -31,24 +32,35 @@ body {
 }
 
 h2 {
-  font-size: 1.35em;
+  font-family: "KhmerOSBTB", sans-serif;
+  font-size: 2em;
   line-height: 6rem;
 }
 
 h3 {
-  font-size: 1.16em;
+  font-family: "KhmerOSBTB", sans-serif;
+  font-size: 1.6em;
   line-height: 4rem;
 }
 
 h4 {
-  font-size: 1em;
-  line-height: 2rem;
+  font-family: "KhmerOSBTB", sans-serif;
+  font-size: 1.2em;
+  line-height: 2.4rem;
 }
 
 h3,
 h4 {
   font-family: "KhmerOSBTB", sans-serif;
   font-weight: 600;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 3rem;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 a {
