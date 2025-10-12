@@ -121,7 +121,10 @@ export default function Compare() {
                     <Hero />
 
                     <div className="compare">
-                        <CompareHeader products={products} onSearch={handleSearch} />
+                        <CompareHeader
+                            products={products}
+                            onSearch={handleSearch}
+                            carDatabase={carDatabase} />
                         <CompareFeatures products={products} />
                     </div>
 
