@@ -69,6 +69,27 @@ const Hero = ({
         );
     }
 
+    if (type === 'featured-image') {
+        return (
+            <div className={`relative banner featured-image ${className}`}>
+                {error ? (
+                    <div className="bg-gray-100 border border-gray-300 rounded-lg p-8 text-center text-gray-600">
+                        Failed to load image
+                    </div>
+                ) : (
+                    <img
+                        src={src}
+                        alt={alt}
+                        onError={() => setError(true)}
+                    />
+                )}
+                <div className='featured-image-text'>
+                    <p>{alt}</p>
+                </div>
+            </div>
+        );
+    }
+
     return (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-yellow-700">
             Unsupported media type: {type}

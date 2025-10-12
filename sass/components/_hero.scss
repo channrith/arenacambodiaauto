@@ -23,9 +23,34 @@
   }
 }
 
+.featured-image {
+  height: auto;
+  max-height: 1080px;
+
+  .featured-image-text {
+    position: absolute;
+    bottom: 15px;
+    left: 20px;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+  }
+
+  .featured-image-text p {
+    line-height: 5.9rem;
+    font-size: 2em;
+    padding: 0 5px;
+    margin-bottom: 0;
+    position: relative;
+    display: inline;
+    color: $white;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, .8);
+    background: url('../../public/image/pattern-diag-dark-33.png');
+  }
+}
+
 .featured {
   max-height: 200px;
 
+  p,
   a {
     font-size: 1.8rem;
   }

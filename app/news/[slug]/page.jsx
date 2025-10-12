@@ -1,23 +1,26 @@
 import Sidebar from "../../_components/Layout/Sidebar";
 import Navbar from "../../_components/Layout/Navbar";
 import NewsContent from "@/app/_components/NewsContent";
+import Hero from "@/app/_components/Layout/Hero";
 
 export default function New({ params }) {
     const { slug } = params;
 
     const newsData = {
         "ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1": {
+            published_at: "2025-10-02T09:00:00.000Z",
             title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
             featured_image: {
                 url: "/image/news/files-1759315271889-830589414.jpg",
                 alt: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
                 thumbnail: "/image/news/resized-file-1759388078259-637898202.jpg"
             },
+            source: "ArenaEV",
             author: {
                 id: "",
-                name: "ArenaEV",
+                name: "AC Auto",
                 avatar: "",
-                bio: "Senior Software Engineer",
+                bio: "",
                 slug: ""
             },
             translator: {
@@ -60,17 +63,19 @@ export default function New({ params }) {
                     </p>`
         },
         "រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន-byd-2": {
+            published_at: "2025-10-02T03:00:00.000Z",
             title: "រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន BYD រំពឹងថាការលក់នៅក្រៅប្រទេសនឹងកើនឡើងដល់ ២០% នៃការលក់សរុបនៅឆ្នាំ ២០២៥។",
             featured_image: {
                 url: "/image/news/file-1759392271468-36349769.jpg",
                 alt: "រថយន្តអគ្គិសនីរបស់ក្រុមហ៊ុន BYD រំពឹងថាការលក់នៅក្រៅប្រទេសនឹងកើនឡើងដល់ ២០% នៃការលក់សរុបនៅឆ្នាំ ២០២៥។",
                 thumbnail: "/image/news/resized-file-1759393685889-250336739.jpg"
             },
+            source: "រ៉យទ័រ",
             author: {
                 id: "",
-                name: "រ៉យទ័រ",
+                name: "AC auto",
                 avatar: "",
-                bio: "រ៉យទ័រ",
+                bio: "",
                 slug: ""
             },
             translator: {
@@ -94,15 +99,17 @@ export default function New({ params }) {
                     </p>`
         },
         "mazda-បង្ហាញរថយន្ត-suv-អគ្គិសនី-ez-60-ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។-3": {
+            published_at: "2025-10-01T03:00:00.000Z",
             title: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
             featured_image: {
                 url: "/image/news/file-1759401962173-711743282.jpg",
                 alt: "Mazda បង្ហាញរថយន្ត SUV អគ្គិសនី EZ-60 ជាមួយនឹងជម្រើសម៉ាស៊ីនពីរប្រភេទ។",
                 thumbnail: "/image/news/resized-file-1759401797655-925493902.jpg"
             },
+            source: "ArenaEV",
             author: {
                 id: "",
-                name: "ArenaEV",
+                name: "AC Auto",
                 avatar: "",
                 bio: "Senior Software Engineer",
                 slug: ""
@@ -163,15 +170,44 @@ export default function New({ params }) {
 
     const news = newsData[decodeURIComponent(slug)];
 
+    const getTimeAgo = (date) => {
+        const now = new Date();
+        const postDate = new Date(date);
+        const diffInMs = now - postDate;
+        const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
+
+        if (diffInHours < 24) {
+            return `${diffInHours} hour${diffInHours !== 1 ? 's' : ''} ago`;
+        } else {
+            const day = postDate.toLocaleDateString('en-US', {
+                timeZone: 'Asia/Phnom_Penh',
+                day: '2-digit'
+            });
+
+            const month = postDate.toLocaleDateString('en-US', {
+                timeZone: 'Asia/Phnom_Penh',
+                month: 'long'
+            });
+
+            const year = postDate.toLocaleDateString('en-US', {
+                timeZone: 'Asia/Phnom_Penh',
+                year: 'numeric'
+            });
+
+            return `${day} ${month} ${year}`;
+        }
+    };
+
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
                 <Sidebar />
                 <div className="content">
-                    <img src={news?.featured_image ? news.featured_image.url : ""} alt={news?.featured_image ? news.featured_image.alt : ""} className="full-width-image" />
-                    <h2 className="full-width-title">{news ? news.title : ""}</h2>
-
+                    <Hero type="featured-image" src={news?.featured_image ? news.featured_image.url : ""} alt={news ? news.title : ""} />
+                    {/* <img src={news?.featured_image ? news.featured_image.url : ""} alt={news?.featured_image ? news.featured_image.alt : ""} className="full-width-image" />
+                    <h2 className="full-width-title">{news ? news.title : ""}</h2> */}
+                    <p style={{ fontSize: "14px" }}><span>{news?.author.name && news.author.name}</span>, <span>{getTimeAgo(news.published_at)}</span></p>
                     <NewsContent content={news ? news.content : "<p>News article not found.</p>"} />
 
                     {/* <div className="two-images">
@@ -179,8 +215,8 @@ export default function New({ params }) {
                         <img src="/image/arenaev_0002.jpg" alt="Image 2" />
                     </div> */}
 
-                    <p>ប្រភព៖ {news?.author ? news.author.name : ""}</p>
-                    <p>ប្រែសំរួល៖ {news?.translator ? news.translator.name : ""}</p>
+                    <p style={{ margin: "0" }}><span>ប្រភព៖</span> <span>{news.source || ""}</span></p>
+                    <p><span>ប្រែសំរួល៖</span> <span>{news?.translator ? news.translator.name : ""}</span></p>
                 </div>
             </div>
         </main>
