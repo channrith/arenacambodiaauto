@@ -2,8 +2,16 @@ import Sidebar from "../_components/Layout/Sidebar";
 import Advertisement from "../_components/Advertisement";
 import Navbar from "../_components/Layout/Navbar";
 import Image from "next/image";
+import Hero from "../_components/Layout/Hero";
 
 export default function Review() {
+    const special = {
+        id: 1,
+        title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
+        link: "/news/ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
+        image: "/image/news/files-1759315271889-830589414.jpg",
+    };
+
     const carLogos = [
         { src: "/image/logo/AION.jpg", alt: "AION" },
         { src: "/image/logo/Audi.jpg", alt: "Audi" },
@@ -58,7 +66,12 @@ export default function Review() {
     return (
         <main className="main">
             <Navbar homepage="true" />
-            <div className="hero"></div>
+            <Hero
+                src={special.image}
+                alt={special.title}
+                link={special.link}
+                showLink={true}
+                className="banner height-500" />
             <div className="main__container">
                 <Sidebar />
                 <div className="content">

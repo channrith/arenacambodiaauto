@@ -1,17 +1,32 @@
 import Sidebar from "../_components/Layout/Sidebar";
 import Navbar from "../_components/Layout/Navbar";
 import Hero from "../_components/Layout/Hero";
+import MediaDisplay from "../_components/MediaDisplay";
 
 export default function About() {
-    const videos = ["GyPo4oTFL0E", "E2cr8Xkg_KI", "dQw4w9WgXcQ", "cW56AuNHLag", "lMo3Cd7rdnY", "xUkPbfherCY"];
-
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
                 <Sidebar />
                 <div className="content">
-                    <Hero />
+                    <div className="featured-grid">
+                        <Hero
+                            type="youtube"
+                            src="https://www.youtube.com/watch?v=DHRxnTPrzOQ" />
+                        <div className="small-gid">
+                            <MediaDisplay
+                                type="ads"
+                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                link="https://arenacambodiaauto.com/promo"
+                                alt="Your ad could be here!" />
+                            <MediaDisplay
+                                type="ads"
+                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                link="https://arenacambodiaauto.com/promo"
+                                alt="Your ad could be here!" />
+                        </div>
+                    </div>
 
                     <div className="about">
                         <div class="about-text">

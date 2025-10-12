@@ -20,10 +20,10 @@ const Header = () => {
                     </div>
 
                     <div className="social-links">
-                        <a href="https://www.tiktok.com/@arenacambodiaauto?is_from_webapp=1&sender_device=pc" title="TikTok"><FontAwesomeIcon icon={faTiktok} size="2px" /></a>
-                        <a href="https://t.me/+uOfZHBWACapmYzE9" title="Telegram"><FontAwesomeIcon icon={faTelegram} size="2px" /></a>
-                        <a href="https://web.facebook.com/arenacambodiaauto" title="Facebook"><FontAwesomeIcon icon={faFacebook} size="2px" /></a>
-                        <a href="https://www.youtube.com/@ArenaCambodiaAuto" title="YouTube"><FontAwesomeIcon icon={faYoutube} size="2px" /></a>
+                        <Link href="https://www.tiktok.com/@arenacambodiaauto?is_from_webapp=1&sender_device=pc" title="tiktok" target="_blank"><FontAwesomeIcon icon={faTiktok} size="2px" /></Link>
+                        <Link href="https://t.me/+uOfZHBWACapmYzE9" title="Telegram" target="_blank"><FontAwesomeIcon icon={faTelegram} size="2px" /></Link>
+                        <Link href="https://web.facebook.com/arenacambodiaauto" title="Facebook" target="_blank"><FontAwesomeIcon icon={faFacebook} size="2px" /></Link>
+                        <Link href="https://www.youtube.com/@ArenaCambodiaAuto" title="YouTube" target="_blank"><FontAwesomeIcon icon={faYoutube} size="2px" /></Link>
                     </div>
                 </div>
             </div>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useState } from 'react'
 
-const Hero = ({
+const MediaDisplay = ({
     type = 'image',
     src,
     link = '#',
@@ -32,7 +32,7 @@ const Hero = ({
         }
 
         return (
-            <div className={`relative video-container banner ${className}`}>
+            <div className={`relative video-container featured ${className}`}>
                 <iframe
                     className="absolute top-0 left-0 w-full h-full rounded-lg"
                     src={`https://www.youtube.com/embed/${videoId}`}
@@ -50,7 +50,7 @@ const Hero = ({
 
     if (type === 'image') {
         return (
-            <div className={`relative banner ${className}`}>
+            <div className={`relative featured ${className}`}>
                 {error ? (
                     <div className="bg-gray-100 border border-gray-300 rounded-lg p-8 text-center text-gray-600">
                         Failed to load image
@@ -69,6 +69,26 @@ const Hero = ({
         );
     }
 
+    if (type === 'ads') {
+        return (
+            <div className={`relative featured-ads ${className}`}>
+                {error ? (
+                    <div className="bg-gray-100 border border-gray-300 rounded-lg p-8 text-center text-gray-600">
+                        Failed to load image
+                    </div>
+                ) : (
+                    <Link href={link}>
+                        <img
+                            src={src}
+                            alt={alt}
+                            onError={() => setError(true)}
+                        />
+                    </Link>
+                )}
+            </div>
+        );
+    }
+
     return (
         <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 text-yellow-700">
             Unsupported media type: {type}
@@ -76,4 +96,4 @@ const Hero = ({
     );
 }
 
-export default Hero;
+export default MediaDisplay;

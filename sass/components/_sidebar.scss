@@ -14,16 +14,21 @@
 
       &__link {
         display: block;
-        padding: 5px 10px;
+        // padding: 5px 10px;
         text-decoration: none;
-        color: black;
-        border-radius: 3px;
+        color: $black;
+        // border-radius: 3px;
         transition: background-color 0.2s ease, color 0.2s ease;
 
         &:hover,
         &.active {
           background-color: $red;
           color: $white;
+        }
+
+        &:last-child {
+          grid-column: 3; /* Forces into last column */
+          justify-self: end; /* Aligns to the right inside its cell */
         }
       }
     }
