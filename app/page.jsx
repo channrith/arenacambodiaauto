@@ -127,7 +127,7 @@ export default function Home() {
             alt="Your ad could be here!"
             link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
           />
-          <PostList posts={posts} />
+          <PostList posts={posts} latest={true} />
         </div>
       </div>
     </main>

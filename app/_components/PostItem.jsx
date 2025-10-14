@@ -31,7 +31,7 @@ const PostItem = ({ post }) => {
     };
 
     return (
-        <div className="blog-post-item flex mb-5">
+        <div className="post-item flex mb-5">
             <Image
                 src={post.featured_image.thumbnail}
                 alt={post.title}
@@ -39,10 +39,10 @@ const PostItem = ({ post }) => {
                 height={160}
                 className="rounded-md mr-4 object-cover"
             />
-            <div style={{ position: "relative",  }}>
-                <h4 className="text-lg font-bold" style={{ margin: "0 0 10px", fontSize: "1.8rem" }}><Link href={post.link}>{post.title}</Link></h4>
-                <p className="text-gray-700" style={{ marginBottom: "10px", fontSize: "1.6rem" }}>{post.excerpt}</p>
-                <p style={{ position: "absolute", bottom: "0", margin: "0", fontSize: "14px" }}>{getTimeAgo(post.published_at)}</p>
+            <div className="post-article">
+                <h4><Link href={post.link}>{post.title}</Link></h4>
+                <p className="post-article-summary">{post.excerpt}</p>
+                <p className="post-article-published-date">{getTimeAgo(post.published_at)}</p>
             </div>
         </div>
     );

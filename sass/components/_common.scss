@@ -69,7 +69,7 @@ iframe {
   padding: 20px;
 }
 
-.blog-post-item {
+.post-item {
   margin-bottom: 15px;
   background-color: #fff;
   display: flex;
@@ -80,9 +80,26 @@ iframe {
     border-radius: 5px;
   }
 
-  h4 {
-    margin-block-start: 1.33em;
-    margin-block-end: 1.33em;
+  .post-article {
+    position: relative;
+
+    h4 {
+      margin-block-start: 0.5em;
+      margin-block-end: 1em;
+      font-size: 1.8rem;
+    }
+  }
+
+  .post-article-summary {
+    margin-bottom: 30px;
+    font-size: 1.6rem;
+  }
+
+  .post-article-published-date {
+    position: absolute;
+    bottom: 0;
+    margin: 0;
+    font-size: 14px;
   }
 }
 
