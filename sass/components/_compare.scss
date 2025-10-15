@@ -1,7 +1,7 @@
 .compare {
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  // max-width: 1200px;
+  // margin: 0 auto;
   font-family: "KhmerOSBTB", sans-serif;
 
   &__header {
@@ -131,6 +131,10 @@
       text-align: left;
       display: flex;
       align-items: center;
+    }
+
+    .feature-col-title {
+      color: #1a77a1;
     }
 
     .feature-label {

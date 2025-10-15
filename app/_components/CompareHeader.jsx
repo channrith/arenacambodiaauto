@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
 
 const CompareHeader = ({ products, onSearch, carDatabase }) => {
-    const displayCards = [products[0], products[1] || { title: "", image: "" }];
+    const cdnUrl = process.env.NEXT_PUBLIC_CDN;
+    const displayCards = [products[0], products[1] || { name: "", image: "" }];
 
     // Keep local input state for each card
     const [searchInputs, setSearchInputs] = useState(["", ""]);
@@ -33,7 +34,7 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
         }
 
         const matches = carDatabase.filter((car) =>
-            car.title.toLowerCase().includes(value.toLowerCase())
+            car.name.toLowerCase().includes(value.toLowerCase())
         );
 
         setSuggestions((prev) => {
@@ -60,10 +61,10 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
     };
 
     const selectCar = (index, car) => {
-        onSearch(index, car.title); // reuse your existing search logic
+        onSearch(index, car.name); // reuse your existing search logic
         setSearchInputs((prev) => {
             const updated = [...prev];
-            updated[index] = car.title;
+            updated[index] = car.name;
             return updated;
         });
 
@@ -109,9 +110,9 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
                         {showSuggestions[index] && suggestions[index].length > 0 && (
                             <ul className="search-suggestions">
                                 {suggestions[index].map((car) => (
-                                    <li key={car.title} onClick={() => selectCar(index, car)}>
-                                        <img src={car.image} alt={car.title} />
-                                        <span>{car.title}</span>
+                                    <li key={car.name} onClick={() => selectCar(index, car)}>
+                                        <img src={`${cdnUrl}/${car.image}`} alt={car.name} />
+                                        <span>{car.name}</span>
                                     </li>
                                 ))}
                             </ul>
@@ -122,11 +123,11 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
                         <i className="fas fa-info-circle"></i> Please enter model name or part of it
                     </p>
 
-                    {product.title && (
+                    {product.name && (
                         <>
-                            <h4 className="card__title">{product.title}</h4>
+                            <h4 className="card__name">{product.name}</h4>
                             <div className="card__image">
-                                <img src={product.image} alt={product.title} />
+                                <img src={`${cdnUrl}/${product.image}`} alt={product.name} />
                             </div>
                         </>
                     )}

@@ -14,27 +14,27 @@ const CompareFeatures = ({ products }) => {
         marginBottom: "1px",
     };
 
-    // 🔹 Collect all category names across all products
+    // 🔹 Get all unique category names across all products
     const allCategories = Array.from(
-        new Set(products.flatMap((p) => p.specs.map((s) => s.category)))
+        new Set(products.flatMap((p) => p.options.map((s) => s.category)))
     );
 
     return (
         <div className="compare__features">
             {allCategories.map((category) => {
-                // Find all unique features for this category across all products
+                // 🔹 Collect all unique labels in this category across all products
                 const categoryFeatures = Array.from(
                     new Set(
                         products.flatMap((p) => {
-                            const spec = p.specs.find((s) => s.category === category);
-                            return spec ? Object.keys(spec.features || {}) : [];
+                            const option = p.options.find((s) => s.category === category);
+                            return option ? option.specs.map((spec) => spec.label) : [];
                         })
                     )
                 );
 
                 return (
                     <div key={category}>
-                        {/* 🟦 Category Header Row */}
+                        {/* 🟦 Category Header */}
                         <div className="feature-row header-row" style={gridStyle}>
                             {isCompareMode ? (
                                 products.map((p, i) => (
@@ -46,46 +46,50 @@ const CompareFeatures = ({ products }) => {
                                     </React.Fragment>
                                 ))
                             ) : (
-                                <div className="feature-col-title feature-label">
-                                    <strong>{category}</strong>
-                                </div>
+                                <>
+                                    <div className="feature-col-title feature-label">
+                                        <strong>{category}</strong>
+                                    </div>
+                                    <div></div>
+                                </>
                             )}
                         </div>
 
                         {/* 🟩 Feature Rows */}
-                        {categoryFeatures.map((featureKey) => (
+                        {categoryFeatures.map((label) => (
                             <div
                                 className="feature-row"
                                 style={gridStyle}
-                                key={`${category}-${featureKey}`}
+                                key={`${category}-${label}`}
                             >
                                 {isCompareMode ? (
                                     products.map((p, i) => {
-                                        const spec = p.specs.find((s) => s.category === category);
+                                        const option = p.options.find((s) => s.category === category);
+                                        const spec = option?.specs.find((s) => s.label === label);
                                         return (
-                                            <React.Fragment key={`${category}-${featureKey}-${i}`}>
+                                            <React.Fragment key={`${category}-${label}-${i}`}>
                                                 <div className="feature-col feature-label">
-                                                    <strong>{featureKey}</strong>
+                                                    <strong>{label}</strong>
                                                 </div>
                                                 <div className="feature-col">
-                                                    {spec?.features?.[featureKey] || "-"}
+                                                    {spec?.value || "-"}
                                                 </div>
                                             </React.Fragment>
                                         );
                                     })
                                 ) : (
-                                    <React.Fragment key={`${category}-${featureKey}-single`}>
+                                    <>
                                         <div className="feature-col feature-label">
-                                            <strong>{featureKey}</strong>
+                                            <strong>{label}</strong>
                                         </div>
                                         <div className="feature-col">
                                             {
-                                                products[0]?.specs
+                                                products[0]?.options
                                                     .find((s) => s.category === category)
-                                                    ?.features?.[featureKey] || "-"
+                                                    ?.specs.find((s) => s.label === label)?.value || "-"
                                             }
                                         </div>
-                                    </React.Fragment>
+                                    </>
                                 )}
                             </div>
                         ))}

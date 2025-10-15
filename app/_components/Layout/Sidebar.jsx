@@ -9,31 +9,31 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 const Sidebar = () => {
     const pathname = usePathname();
     const makers = [
-        { path: "/make/toyota", label: "Toyota" },
-        { path: "/make/ssangYong", label: "SsangYong" },
-        { path: "/make/mitsubishi", label: "Mitsubishi" },
-        { path: "/make/ford", label: "Ford" },
-        { path: "/make/greely", label: "Greely" },
-        { path: "/make/aiqar", label: "AIQAR" },
-        { path: "/make/nissan", label: "Nissan" },
-        { path: "/make/chang-an", label: "Chang an" },
-        { path: "/make/peugeot", label: "Peugeot" },
-        { path: "/make/isuzu", label: "Isuzu" },
-        { path: "/make/jeep", label: "Jeep" },
-        { path: "/make/gac", label: "GAC" },
-        { path: "/make/hyundai", label: "Hyundai" },
-        { path: "/make/range-rover", label: "Range Rover" },
-        { path: "/make/chevrolet", label: "Chevrolet" },
-        { path: "/make/kia", label: "KIA" },
-        { path: "/make/mazda", label: "Mazda" },
-        { path: "/make/honda", label: "Honda" },
-        { path: "/make/suzuki", label: "Suzuki" },
-        { path: "/make/jmc", label: "JMC" },
-        { path: "/make/mercedes", label: "Mercedes" },
-        { path: "/make/mg", label: "MG" },
-        { path: "/make/gtv", label: "GTV" },
-        { path: "/make/bmw", label: "BMW" },
-        { path: "/logo", label: "All Brands" },
+        { brand: "toyota", path: "/make/toyota/local", label: "Toyota" },
+        { brand: "ssangyong", path: "/make/ssangyong/local", label: "SsangYong" },
+        { brand: "mitsubishi", path: "/make/mitsubishi/local", label: "Mitsubishi" },
+        { brand: "ford", path: "/make/ford/local", label: "Ford" },
+        { brand: "greely", path: "/make/greely/local", label: "Greely" },
+        { brand: "aiqar", path: "/make/aiqar/local", label: "AIQAR" },
+        { brand: "nissan", path: "/make/nissan/local", label: "Nissan" },
+        { brand: "chang-an", path: "/make/chang-an/local", label: "Chang an" },
+        { brand: "peugeot", path: "/make/peugeot/local", label: "Peugeot" },
+        { brand: "isuzu", path: "/make/isuzu/local", label: "Isuzu" },
+        { brand: "jeep", path: "/make/jeep/local", label: "Jeep" },
+        { brand: "gac", path: "/make/gac/local", label: "GAC" },
+        { brand: "hyundai", path: "/make/hyundai/local", label: "Hyundai" },
+        { brand: "range-rover", path: "/make/range-rover/local", label: "Range Rover" },
+        { brand: "chevrolet", path: "/make/chevrolet/local", label: "Chevrolet" },
+        { brand: "kia", path: "/make/kia/local", label: "KIA" },
+        { brand: "mazda", path: "/make/mazda/local", label: "Mazda" },
+        { brand: "honda", path: "/make/honda/local", label: "Honda" },
+        { brand: "suzuki", path: "/make/suzuki/local", label: "Suzuki" },
+        { brand: "jmc", path: "/make/jmc/local", label: "JMC" },
+        { brand: "mercedes", path: "/make/mercedes/local", label: "Mercedes" },
+        { brand: "mg", path: "/make/mg/local", label: "MG" },
+        { brand: "gtv", path: "/make/gtv/local", label: "GTV" },
+        { brand: "bmw", path: "/make/bmw/local", label: "BMW" },
+        { brand: "", path: "/logo", label: "All Brands" },
     ];
 
     return (
@@ -42,13 +42,13 @@ const Sidebar = () => {
                 <h3>Car Producers</h3>
 
                 <div className="maker">
-                    {makers.map((maker, index) => {
-                        const isActive = pathname === maker.path || pathname.startsWith(`${maker.path}/`);
+                    {makers.map(maker => {
+                        const activeMaker = makers.find(maker => pathname.includes(maker.brand));
                         return (
                             <Link
-                                key={index}
+                                key={maker.brand}
                                 href={maker.path}
-                                className={`maker__link ${isActive ? 'active' : ''}`}
+                                className={`maker__link ${activeMaker?.brand === maker.brand ? 'active' : ''}`}
                             >
                                 {maker.path === "/logo" ? (
                                     <>
