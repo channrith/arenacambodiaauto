@@ -26,7 +26,13 @@ export default function Make() {
             year_end: null,
             image: "/01_ZEVConcpt_FR_Global.jpg",
             features: {
-                colors: [],
+                colors: [
+                    {
+                        name: "Calestite",
+                        code: "#585f70",
+                        image: "vehicles/20251015/Corolla-LE-2026/colors/Calestite-color-.png"
+                    },
+                ],
                 images: [
                     "arenaev_0001.jpg",
                     "arenaev_0002.jpg",
@@ -51,23 +57,6 @@ export default function Make() {
                     ],
                 },
             ],
-            specs: [
-                { "key": "Motor Power", "value": "135 kW" },
-                { "key": "Battery Capacity", "value": "49 kWh" },
-                { "key": "Range", "value": "410 km" }
-            ],
-            variants: [
-                {
-                    "id": 1,
-                    "name": "Standard",
-                    "price": 32500,
-                    "currency": "USD",
-                    "image": "/01_ZEVConcpt_FR_Global.jpg"
-                }
-            ],
-            reviews: [
-                { "id": 1, "title": "Smooth and Efficient", "rating": 4.5, "content": "Great for city driving." }
-            ]
         },
         'toyota-corolla-le-2026': {
             name: 'Toyota Corolla LE 2026',
@@ -249,8 +238,6 @@ export default function Make() {
                     ],
                 },
             ],
-            specs: [],
-            variants: [],
         },
     };
 
