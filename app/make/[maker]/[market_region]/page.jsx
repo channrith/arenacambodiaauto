@@ -39,7 +39,6 @@ export default function Make() {
                     <Hero
                         type='featured-image'
                         alt='Toyota electric vehicles'
-                        className='height-410'
                         src="/image/01_ZEVConcpt_FR_Global.jpg" />
                     <div className="car-maker">
                         <div className="tabs">
