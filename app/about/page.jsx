@@ -17,12 +17,12 @@ export default function About() {
                         <div className="small-gid">
                             <MediaDisplay
                                 type="ads"
-                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                src="/image/f2qy2v60cFOQIjm3DxAbrULlUgiBvdTWCGOG4WUp.jpg"
                                 link="https://arenacambodiaauto.com/promo"
                                 alt="Your ad could be here!" />
                             <MediaDisplay
                                 type="ads"
-                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.jpg"
                                 link="https://arenacambodiaauto.com/promo"
                                 alt="Your ad could be here!" />
                         </div>
@@ -54,7 +54,7 @@ export default function About() {
 
                         <div class="three-image-layout">
                             <div class="top-images">
-                                <img src="./image/about1.png" alt="Small Image 1" />
+                                <img src="./image/about1.jpg" alt="Small Image 1" />
                                 <img src="./image/cameraman.jpg" alt="Small Image 2" />
                             </div>
                             <div class="bottom-image">

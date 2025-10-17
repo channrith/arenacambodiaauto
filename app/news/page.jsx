@@ -119,9 +119,9 @@ export default function News() {
                         </div>
                     </div>
                     <Advertisement
-                        image="/image/EN-Euro.gif"
+                        image="/image/Ads-Poster-800x150px.jpg"
                         alt="Your ad could be here!"
-                        link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
                     <PostList posts={posts} />
                 </div>

@@ -64,7 +64,7 @@ const Sidebar = () => {
             </div>
 
             <Advertisement
-                image="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                image="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.jpg"
                 alt="Your ad could be here!"
                 link="https://arenacambodiaauto.com/promo"
                 height={300}

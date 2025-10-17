@@ -16,9 +16,9 @@ export default function Review() {
                     <Hero type="youtube"
                         src="https://www.youtube.com/watch?v=abQ3z3uCauo" />
                     <Advertisement
-                        image="/image/EN-Euro.gif"
+                        image="/image/AdsPoster800x150px.jpg"
                         alt="Your ad could be here!"
-                        link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
                     <VideoList videos={videos} />
                 </div>

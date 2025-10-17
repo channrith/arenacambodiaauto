@@ -228,12 +228,12 @@ export default function Compare({ searchParams }) {
                         <div className="small-gid">
                             <MediaDisplay
                                 type="ads"
-                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.jpg"
                                 link="https://arenacambodiaauto.com/promo"
                                 alt="Your ad could be here!" />
                             <MediaDisplay
                                 type="ads"
-                                src="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.png"
+                                src="/image/f2qy2v60cFOQIjm3DxAbrULlUgiBvdTWCGOG4WUp.jpg"
                                 link="https://arenacambodiaauto.com/promo"
                                 alt="Your ad could be here!" />
                         </div>

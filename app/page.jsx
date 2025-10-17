@@ -125,7 +125,7 @@ export default function Home() {
           <Advertisement
             image="/image/EN-Euro.gif"
             alt="Your ad could be here!"
-            link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+            // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
           />
           <PostList posts={posts} />
         </div>
