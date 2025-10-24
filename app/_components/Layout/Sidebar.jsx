@@ -43,7 +43,7 @@ const Sidebar = () => {
 
                 <div className="maker">
                     {makers.map(maker => {
-                        const activeMaker = makers.find(maker => pathname.includes(maker.brand));
+                        const activeMaker = makers.find(maker => pathname.includes(`/${maker.brand}/`));
                         return (
                             <Link
                                 key={maker.brand}

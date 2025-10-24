@@ -34,3 +34,13 @@
   border-radius: 6px;
   display: block;
 }
+
+.news-content {
+  p:has(img) {
+    margin-bottom: 0 !important;
+  }
+
+  p img {
+    display: block;
+  }
+}
