@@ -24,7 +24,7 @@
 }
 
 .featured-image {
-  height: auto;
+  aspect-ratio: 16 / 9;
   max-height: 1080px;
 
   .featured-image-text {

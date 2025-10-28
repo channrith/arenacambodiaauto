@@ -1,5 +1,6 @@
 "use client"
 
+import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react'
 
@@ -56,10 +57,13 @@ const Hero = ({
                         Failed to load image
                     </div>
                 ) : (
-                    <img
+                    <Image
                         src={src}
                         alt={alt}
+                        sizes="100vw"
+                        fill
                         onError={() => setError(true)}
+                        priority
                     />
                 )}
                 {showLink && (
@@ -71,16 +75,19 @@ const Hero = ({
 
     if (type === 'featured-image') {
         return (
-            <div className={`relative banner featured-image ${className}`}>
+            <div className={`banner featured-image ${className}`}>
                 {error ? (
                     <div className="bg-gray-100 border border-gray-300 rounded-lg p-8 text-center text-gray-600">
                         Failed to load image
                     </div>
                 ) : (
-                    <img
+                    <Image
                         src={src}
                         alt={alt}
+                        sizes="100vw"
+                        fill
                         onError={() => setError(true)}
+                        priority
                     />
                 )}
                 <div className='featured-image-text'>

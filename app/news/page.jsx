@@ -1,3 +1,11 @@
+export const metadata = {
+    title: "Latest News | Arena Cambodia Auto",
+    description: "Arena Cambodia Auto is a website of vehicle news and knowledge.",
+    alternates: {
+        canonical: "https://arenacambodiaauto.com/news",
+    },
+};
+
 import Sidebar from "./../_components/Layout/Sidebar";
 import Advertisement from "./../_components/Advertisement";
 import Navbar from "../_components/Layout/Navbar";
@@ -27,12 +35,29 @@ async function getNews() {
 export default async function News() {
     const posts = await getNews();
 
+    const itemListJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "name": "Arena Cambodia Auto News",
+        "itemListElement": posts.map((post, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "url": `https://arenacambodiaauto.com/news/${post.slug}`,
+            "name": post.title,
+            "image": post.featured_image.url
+        }))
+    };
+
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
                 <Sidebar />
                 <div className="content">
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+                    />
                     <div className="featured-grid">
                         <Hero
                             src={posts[0].featured_image.url}

@@ -54,3 +54,7 @@ Thumbs.db
 .env
 package-lock.json
 ecosystem.config.js
+
+/public/robots.txt
+/public/sitemap-0.xml
+/public/sitemap.xml

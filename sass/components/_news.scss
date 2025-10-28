@@ -36,6 +36,33 @@
 }
 
 .news-content {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  iframe,
+  video {
+    max-width: 100%;
+    height: auto;
+  }
+
+  table {
+    width: 100%;
+    overflow-x: auto;
+    display: block;
+  }
+
+  pre {
+    overflow-x: auto;
+    max-width: 100%;
+  }
+
   p:has(img) {
     margin-bottom: 0 !important;
   }

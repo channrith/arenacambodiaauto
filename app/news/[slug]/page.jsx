@@ -22,10 +22,57 @@ async function getNewsById(id) {
     }
 }
 
+export async function generateMetadata({ params }) {
+    const { slug } = params;
+    const id = slug.split('-').pop();
+    const news = await getNewsById(id);
+    if (!news) return { title: "Article not found | Arena Cambodia Auto" };
+
+    return {
+        title: `${news.title} | Arena Cambodia Auto`,
+        description: news.excerpt || 'Arena Cambodia Auto is a website of vehicle news and knowledge',
+        openGraph: {
+            title: news.title,
+            description: news.excerpt,
+            url: `https://arenacambodiaauto.com/news/${slug}`,
+            images: news.featured_image ? [news.featured_image.url] : [],
+        },
+        alternates: {
+            canonical: `https://arenacambodiaauto.com/news/${slug}`,
+        }
+    };
+}
+
 export default async function New({ params }) {
     const { slug } = params;
-    const lastSegment = slug.split('-').pop();
-    const news = await getNewsById(lastSegment);
+    const id = slug.split('-').pop();
+    const news = await getNewsById(id);
+
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": news.title,
+        "image": news.featured_image ? news.featured_image.url : "",
+        "datePublished": news.published_at,
+        "dateModified": news.updated_at || news.published_at,
+        "author": {
+            "@type": "Person",
+            "name": news.author?.name || "Arena Cambodia Auto"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "Arena Cambodia Auto",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cdn.arenacambodiaauto.com/assets/logo.jpg"
+            }
+        },
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": `https://arenacambodiaauto.com/news/${slug}`
+        },
+        "articleBody": news.content?.replace(/<[^>]*>/g, "") || "" // remove HTML tags for indexing
+    };
 
     const getTimeAgo = (date) => {
         const now = new Date();
@@ -74,6 +121,11 @@ export default async function New({ params }) {
 
                     <p style={{ margin: "0" }}><span>ប្រភព៖</span> <span>{news.source || ""}</span></p>
                     <p><span>ប្រែសំរួល៖</span> <span>{news?.translator ? news.translator.name : ""}</span></p>
+
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                    />
                 </div>
             </div>
         </main>
