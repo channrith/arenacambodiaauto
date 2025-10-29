@@ -25,7 +25,7 @@ export default function Make() {
             name: "Toyota Urban Cruiser FWD 49kWh",
             year_start: 2024,
             year_end: null,
-            image: "/01_ZEVConcpt_FR_Global.jpg",
+            image: "01_ZEVConcpt_FR_Global.jpg",
             features: {
                 colors: [
                     {
