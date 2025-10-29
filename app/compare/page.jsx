@@ -8,6 +8,14 @@ import CompareHeader from "../_components/CompareHeader";
 import Hero from "../_components/Layout/Hero";
 import MediaDisplay from "../_components/MediaDisplay";
 
+export const metadata = {
+    title: "Car Comparison",
+    description: "Arena Cambodia Auto is a website of vehicle news and knowledge.",
+    alternates: {
+        canonical: "https://arenacambodiaauto.com/compare",
+    },
+};
+
 export default function Compare({ searchParams }) {
     const { make, market_region, model } = searchParams;
 
@@ -215,8 +223,64 @@ export default function Compare({ searchParams }) {
         }
     };
 
+    const structuredData = useMemo(() => {
+        const productList = products.map((p) => ({
+            "@type": "Product",
+            name: p.name,
+            image: `https://arenacambodiaauto.com/${p.image}`,
+            brand: { "@type": "Brand", name: p.brand },
+            offers: {
+                "@type": "Offer",
+                priceCurrency: "USD",
+                price: p.price.replace(/[^0-9.]/g, ""),
+                availability: p.status.includes("coming")
+                    ? "http://schema.org/PreOrder"
+                    : "http://schema.org/InStock",
+            },
+            releaseDate: p.launchDate,
+        }));
+
+        return {
+            "@context": "https://schema.org",
+            "@type": "ProductComparison",
+            name: "Car Comparison",
+            description: "Arena Cambodia Auto is a website of vehicle news and knowledge.",
+            url: "https://arenacambodiaauto.com/compare",
+            productList,
+        };
+    }, [products]);
+
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arenacambodiaauto.com",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://arenacambodiaauto.com/compare",
+            },
+        ],
+    };
+
     return (
         <main className="main">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+            />
+
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+
             <Navbar />
             <div className="main__container">
                 <Sidebar />

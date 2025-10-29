@@ -25,9 +25,9 @@ const Footer = () => {
 
                     <div className="footer__links-row">
                         <div className="footer__social">
-                            <a href="https://www.tiktok.com/@arenacambodiaauto?is_from_webapp=1&sender_device=pc"><FontAwesomeIcon icon={faTiktok} /> TikTok</a>
+                            <a href="https://www.tiktok.com/@arenacambodiaauto"><FontAwesomeIcon icon={faTiktok} /> TikTok</a>
                             <a href="https://t.me/+uOfZHBWACapmYzE9"><FontAwesomeIcon icon={faTelegram} /> Telegram</a>
-                            <a href="https://web.facebook.com/arenacambodiaauto"><FontAwesomeIcon icon={faFacebook} /> Facebook</a>
+                            <a href="https://www.facebook.com/arenacambodiaauto"><FontAwesomeIcon icon={faFacebook} /> Facebook</a>
                             <a href="https://www.youtube.com/@ArenaCambodiaAuto"><FontAwesomeIcon icon={faYoutube} /> YouTube</a>
 
                             <span><FontAwesomeIcon icon={faEnvelope} /> Email: info_arenacambo@gmail.com</span>

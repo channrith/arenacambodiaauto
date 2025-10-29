@@ -3,9 +3,87 @@ import Navbar from "../_components/Layout/Navbar";
 import Hero from "../_components/Layout/Hero";
 import MediaDisplay from "../_components/MediaDisplay";
 
+export const metadata = {
+    title: "About Us",
+    description: "We are warming welcome all our Customers to Arena Cambodia Auto.",
+    alternates: {
+        canonical: "https://arenacambodiaauto.com/about",
+    },
+};
+
 export default function About() {
+    const webPageJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "About Arena Cambodia Auto",
+        "url": "https://arenacambodiaauto.com/about",
+        "description":
+            "Arena Cambodia Auto is a website of vehicle news and knowledge. All new models you can visit on this page or website as link as below",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Arena Cambodia Auto",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://cdn.arenacambodiaauto.com/assets/logo.jpg",
+            },
+        },
+    };
+
+    const organizationJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Arena Cambodia Auto",
+        "url": "https://arenacambodiaauto.com",
+        "logo": "https://cdn.arenacambodiaauto.com/assets/logo.jpg",
+        "email": "info_arenacambo@gmail.com",
+        "telephone": "+855967172226",
+        "sameAs": [
+            "https://www.facebook.com/arenacambodiaauto",
+            "https://www.youtube.com/@ArenaCambodiaAuto",
+            "https://t.me/+uOfZHBWACapmYzE9",
+            "https://www.tiktok.com/@arenacambodiaauto",
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Phnom Penh",
+            "addressCountry": "Cambodia",
+        },
+    };
+
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arenacambodiaauto.com",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "About Us",
+                "item": "https://arenacambodiaauto.com/about",
+            },
+        ],
+    };
+
     return (
         <main className="main">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+            />
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
+
             <Navbar />
             <div className="main__container">
                 <Sidebar />

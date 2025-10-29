@@ -5,7 +5,6 @@ config.autoAddCss = false;
 import "./../sass/main.scss";
 import Footer from "./_components/Layout/Footer";
 import Header from "./_components/Layout/Header";
-import Sidebar from "./_components/Layout/Sidebar";
 
 export const metadata = {
   title: {

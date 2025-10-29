@@ -1,6 +1,6 @@
 export const metadata = {
   title: "Arena Cambodia Auto",
-  description: "All new models vehicle you can find on Arena Cambodia Auto.",
+  description: "Arena Cambodia Auto is a website of vehicle news and knowledge. All new models you can visit on this page or website as link as below",
   alternates: {
     canonical: "https://arenacambodiaauto.com",
   },
@@ -67,6 +67,9 @@ export default async function Home() {
     "logo": "https://cdn.arenacambodiaauto.com/assets/logo.jpg",
     "sameAs": [
       "https://www.facebook.com/arenacambodiaauto",
+      "https://www.youtube.com/@ArenaCambodiaAuto",
+      "https://t.me/+uOfZHBWACapmYzE9",
+      "https://www.tiktok.com/@arenacambodiaauto",
     ]
   };
 

@@ -1,5 +1,5 @@
 export const metadata = {
-    title: "Latest News | Arena Cambodia Auto",
+    title: "Latest News",
     description: "Arena Cambodia Auto is a website of vehicle news and knowledge.",
     alternates: {
         canonical: "https://arenacambodiaauto.com/news",
@@ -48,6 +48,25 @@ export default async function News() {
         }))
     };
 
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arenacambodiaauto.com",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "News",
+                "item": "https://arenacambodiaauto.com/news",
+            },
+        ],
+    };
+
     return (
         <main className="main">
             <Navbar />
@@ -58,6 +77,11 @@ export default async function News() {
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
                     />
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+                    />
+
                     <div className="featured-grid">
                         <Hero
                             src={posts[0].featured_image.url}

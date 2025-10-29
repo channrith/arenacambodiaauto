@@ -74,6 +74,25 @@ export default async function New({ params }) {
         "articleBody": news.content?.replace(/<[^>]*>/g, "") || "" // remove HTML tags for indexing
     };
 
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://arenacambodiaauto.com",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "News",
+                "item": `https://arenacambodiaauto.com/news/${slug}`,
+            },
+        ],
+    };
+
     const getTimeAgo = (date) => {
         const now = new Date();
         const postDate = new Date(date);
@@ -125,6 +144,11 @@ export default async function New({ params }) {
                     <script
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+                    />
+
+                    <script
+                        type="application/ld+json"
+                        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                     />
                 </div>
             </div>
