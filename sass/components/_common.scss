@@ -2,6 +2,10 @@
   &__container {
     min-height: calc(100vh - 13rem);
     display: flex;
+
+    @media (max-width: 768px) {
+      flex-direction: column-reverse; // Sidebar goes below content
+    }
   }
 
   .content {
@@ -73,10 +77,10 @@ iframe {
 }
 
 .post-item {
-  margin-bottom: 15px;
   background-color: #fff;
-  display: flex;
   margin-bottom: 20px;
+  display: flex;
+  align-items: flex-start;
 
   img {
     margin-right: 15px;
@@ -103,6 +107,29 @@ iframe {
     bottom: 0;
     margin: 0;
     font-size: 14px;
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column; // stack image and article vertically
+    align-items: center; // center the image horizontally if desired
+
+    img {
+      margin: 0 0 15px 0; // spacing below image
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+    }
+
+    .post-article {
+      position: static; // reset absolute positioning
+      width: 100%;
+      text-align: left;
+
+      .post-article-published-date {
+        position: static; // no need for absolute on mobile
+        margin-top: 10px;
+      }
+    }
   }
 }
 

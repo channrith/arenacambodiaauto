@@ -31,13 +31,12 @@ const PostItem = ({ post }) => {
     };
 
     return (
-        <div className="post-item flex mb-5">
+        <div className="post-item">
             <Image
                 src={post.featured_image.thumbnail}
                 alt={post.title}
                 width={240}
                 height={160}
-                className="rounded-md mr-4 object-cover"
             />
             <div className="post-article">
                 <h4><Link href={post.link}>{post.title}</Link></h4>

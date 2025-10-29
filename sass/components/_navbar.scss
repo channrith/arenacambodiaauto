@@ -5,11 +5,6 @@
   &--homepage {
     position: absolute;
     z-index: 10;
-    // top: 54px;
-
-    &__menu {
-      padding: 12px 0;
-    }
   }
 
   &__menu {
@@ -37,15 +32,49 @@
     }
   }
 
+  &__toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2.4rem;
+    cursor: pointer;
+    padding: 10px 15px;
+    color: #333;
+  }
+
   @media (max-width: 768px) {
-    position: static;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    &__toggle {
+      display: block;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      z-index: 20;
+    }
 
     &__menu {
+      display: none;
       flex-direction: column;
       align-items: center;
+      background-color: #fff;
+      width: 100%;
+      position: absolute;
+      top: 50px;
+      left: 0;
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      border-top: 1px solid #eee;
 
       li {
-        margin: 5px 0;
+        margin: 10px 0;
+      }
+
+      &--open {
+        display: flex; // Show menu when toggled
+        z-index: 10;
       }
     }
   }
