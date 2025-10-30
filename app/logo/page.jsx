@@ -4,13 +4,28 @@ import Navbar from "../_components/Layout/Navbar";
 import Image from "next/image";
 import Hero from "../_components/Layout/Hero";
 
-export default function Review() {
-    const special = {
-        id: 1,
-        title: `ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន Huawei សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់ ប្រព័ន្ធ ADS "Qiankun"`,
-        link: "/news/ក្រុមហ៊ុនបច្ចេកវិទ្យាយក្សចិន-huawei-សម្រេចបាននូវសមិទ្ធផលថ្មីដ៏សំខាន់មួយរបស់-ប្រព័ន្ធ-ads-qiankun-1",
-        image: "/image/news/files-1759315271889-830589414.jpg",
-    };
+async function getNewsHighlights() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/highlights`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch highlight");
+        const data = await res.json();
+        return data || [];
+    } catch (err) {
+        console.error("❌ Error loading highlight:", err);
+        return [];
+    }
+}
+
+export default async function LogoPage() {
+    const highlights = await getNewsHighlights();
+    const special = highlights[0];
 
     const carLogos = [
         { src: "/image/logo/AION.jpg", alt: "AION" },
@@ -67,7 +82,7 @@ export default function Review() {
         <main className="main">
             <Navbar homepage="true" />
             <Hero
-                src={special.image}
+                src={special.featured_image.url}
                 alt={special.title}
                 link={special.link}
                 showLink={true}
