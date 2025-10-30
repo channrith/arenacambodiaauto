@@ -93,7 +93,7 @@ export default async function LogoPage() {
                     <Advertisement
                         image="/image/EN-Euro.gif"
                         alt="Your ad could be here!"
-                        link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
 
                     <div className="logo-page">
