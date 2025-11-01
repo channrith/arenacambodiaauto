@@ -1,73 +1,52 @@
-"use client"
-
-import { useParams } from 'next/navigation';
-import Link from 'next/link';
 import Sidebar from "../../../_components/Layout/Sidebar";
 import Navbar from "../../../_components/Layout/Navbar";
-import Hero from '@/app/_components/Layout/Hero';
+import RegionClient from './RegionClient';
 
-export default function Make() {
-    const { maker, market_region } = useParams();
+async function getVehicleModel({ region, maker }) {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/model?global=${region}&maker=${maker}&service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
 
-    const getCarModels = {
-        'local': [
-            {
-                name: "Urban Cruiser FWD 49kWh",
-                slug: "urban-cruiser-FWD-49kWh",
-                year_start: 2024,
-                image: "/image/toyota-urban-cruiser-FWD-49kWh.jpg",
-            },
-        ],
-        'global': [
-            {
-                name: "TOYOTA Corolla LE 2026 ",
-                slug: "toyota-corolla-le-2026",
-                year_start: 2024,
-                image: "/image/vehicles/20251015/Corolla-LE-2026/Size-600px-x-320px-(Corolla-LE-2026).png",
-            },
-        ]
+        if (!res.ok) throw new Error("Failed to fetch vehicles");
+        const data = await res.json();
+
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading vehicles:", err);
+        return [];
+    }
+}
+
+export default async function Make({ params }) {
+    const { maker, market_region } = params;
+    const region = market_region === 'global' ? 1 : 0;
+    const apiResponse = await getVehicleModel({ region, maker });
+    // Fallback data in case API returns empty
+    const vehicleData = apiResponse.vehicles.length ? apiResponse.vehicles : [
+        {
+            name: "Urban Cruiser FWD 49kWh",
+            slug: "urban-cruiser-FWD-49kWh",
+            year_start: 2024,
+            image: "/image/toyota-urban-cruiser-FWD-49kWh.jpg",
+        },
+    ];
+    const pageData = {
+        currentPage: apiResponse.current_page,
+        total: apiResponse.total,
+        perPage: apiResponse.per_page,
     };
-
-    const carModels = getCarModels[market_region];
 
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
                 <Sidebar />
-                <div className="content">
-                    <Hero
-                        type='featured-image'
-                        alt='Toyota electric vehicles'
-                        src="/image/01_ZEVConcpt_FR_Global.jpg" />
-                    <div className="car-maker">
-                        <div className="tabs">
-                            <ul className="tab-menu">
-                                <li className={market_region === 'local' ? 'active' : ''}>
-                                    <Link href={`/make/${maker}/local`}>ក្នុងស្រុក</Link>
-                                </li>
-                                <li className={market_region === 'global' ? 'active' : ''}>
-                                    <Link href={`/make/${maker}/global`}>ក្រៅស្រុក</Link>
-                                </li>
-                            </ul>
-
-                            <div className="car-list">
-                                {carModels.map((model) => (
-                                    <div key={model.slug} className="car-item">
-                                        <img src={model.image} alt={model.name} />
-                                        <div className="car-info">
-                                            <h4 className='car-model-name'>
-                                                <Link href={`/make/${maker}/${market_region}/${model.slug}`}>{model.name}</Link>
-                                            </h4>
-                                            <p className='car-year'>{model.year_start} -</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
+                <RegionClient vehicles={vehicleData} pagination={pageData} />
             </div>
         </main >
     );
