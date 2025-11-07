@@ -1,10 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleInfo } from "@fortawesome/free-solid-svg-icons";
-
-const CompareHeader = ({ products, onSearch, carDatabase }) => {
-    const cdnUrl = process.env.NEXT_PUBLIC_CDN;
+const CompareHeader = ({ products, onSearch }) => {
+    const debounceTimers = useRef({});
     const displayCards = [products[0], products[1] || { name: "", image: "" }];
 
     // Keep local input state for each card
@@ -18,7 +15,7 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
         updatedInputs[index] = value;
         setSearchInputs(updatedInputs);
 
-        // filter database for matches
+        // Clear suggestions if input is empty
         if (value.trim() === "") {
             setSuggestions((prev) => {
                 const updated = [...prev];
@@ -33,22 +30,61 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
             return;
         }
 
-        const matches = carDatabase.filter((car) =>
-            car.name.toLowerCase().includes(value.toLowerCase())
-        );
+        // Debounce API call
+        debounceTimers.current[index] = setTimeout(async () => {
+            try {
+                const response = await fetch(
+                    `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/search?service=acauto&q=${encodeURIComponent(value)}`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                            token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "",
+                        },
+                    }
+                );
 
-        setSuggestions((prev) => {
-            const updated = [...prev];
-            updated[index] = matches;
-            return updated;
-        });
+                if (!response.ok) throw new Error("Failed to fetch vehicle data");
 
-        setShowSuggestions((prev) => {
-            const updated = [...prev];
-            updated[index] = true;
-            return updated;
-        });
+                const data = await response.json();
+
+                // Update suggestions with API results
+                setSuggestions((prev) => {
+                    const updated = [...prev];
+                    updated[index] = data; // Adjust based on your API response structure
+                    return updated;
+                });
+
+                setShowSuggestions((prev) => {
+                    const updated = [...prev];
+                    updated[index] = data.length > 0;
+                    return updated;
+                });
+
+            } catch (error) {
+                console.error("Error fetching vehicle suggestions:", error);
+
+                // Handle error - clear suggestions
+                setSuggestions((prev) => {
+                    const updated = [...prev];
+                    updated[index] = [];
+                    return updated;
+                });
+
+                setShowSuggestions((prev) => {
+                    const updated = [...prev];
+                    updated[index] = false;
+                    return updated;
+                });
+            }
+        }, 300); // Wait 300ms after user stops typing
     };
+
+    // Clean up timers on unmount
+    useEffect(() => {
+        return () => {
+            Object.values(debounceTimers.current).forEach(clearTimeout);
+        };
+    }, []);
 
     const handleKeyDown = (index, e) => {
         if (e.key === "Enter") {
@@ -61,7 +97,7 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
     };
 
     const selectCar = (index, car) => {
-        onSearch(index, car.name); // reuse your existing search logic
+        onSearch(index, car); // reuse your existing search logic
         setSearchInputs((prev) => {
             const updated = [...prev];
             updated[index] = car.name;
@@ -110,8 +146,8 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
                         {showSuggestions[index] && suggestions[index].length > 0 && (
                             <ul className="search-suggestions">
                                 {suggestions[index].map((car) => (
-                                    <li key={car.name} onClick={() => selectCar(index, car)}>
-                                        <img src={`${cdnUrl}/${car.image}`} alt={car.name} />
+                                    <li key={`${car.name}-${car.id}`} onClick={() => selectCar(index, car)}>
+                                        <img src={car.image} alt={car.name} />
                                         <span>{car.name}</span>
                                     </li>
                                 ))}
@@ -127,7 +163,7 @@ const CompareHeader = ({ products, onSearch, carDatabase }) => {
                         <>
                             <h4 className="card__name">{product.name}</h4>
                             <div className="card__image">
-                                <img src={`${cdnUrl}/${product.image}`} alt={product.name} />
+                                <img src={product.image} alt={product.name} />
                             </div>
                         </>
                     )}

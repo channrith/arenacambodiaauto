@@ -1,7 +1,11 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { useState } from "react";
 
 const PostItem = ({ post }) => {
+    const [hasError, setHasError] = useState(false)
     const getTimeAgo = (date) => {
         const now = new Date();
         const postDate = new Date(date);
@@ -32,12 +36,19 @@ const PostItem = ({ post }) => {
 
     return (
         <div className="post-item">
-            <Image
-                src={post.featured_image.thumbnail}
-                alt={post.title}
-                width={240}
-                height={160}
-            />
+            {!hasError ? (
+                <Image
+                    src={post.featured_image.thumbnail}
+                    alt={post.title}
+                    width={240}
+                    height={160}
+                    onError={() => setHasError(true)}
+                />
+            ) : (
+                <div className="css-placeholder">
+                    <span>Image not available</span>
+                </div>
+            )}
             <div className="post-article">
                 <h4><Link href={post.link}>{post.title}</Link></h4>
                 <p className="post-article-summary">{post.excerpt}</p>
