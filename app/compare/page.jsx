@@ -32,8 +32,35 @@ async function getCarModelById(modelId) {
 
 export default async function ComparePage({ searchParams }) {
     const { make, market_region, model } = searchParams;
-    const modelId = model.split('-').pop();
-    const vehicle = await getCarModelById(modelId);
+    let vehicle = {
+        name: "Toyota Urban Cruiser FWD 49kWh",
+        year_start: 2024,
+        year_end: null,
+        image: "/image/01_ZEVConcpt_FR_Global.jpg",
+        options: [
+            {
+                category: "LAUNCH",
+                specs: [
+                    { label: "Announced", value: "2024, December 12" },
+                    { label: "Status", value: "Coming soon. Expected release 2025" },
+                ],
+            },
+            {
+                category: "PERFORMANCE",
+                specs: [
+                    { label: "Power", value: "FWD 106 kW (144 hp)" },
+                    { label: "Torque", value: "189 Nm (139 lb-ft)" },
+                    { label: "Acceleration", value: "" },
+                    { label: "Max speed", value: "" },
+                ],
+            },
+        ],
+    };
+
+    if (model !== undefined) {
+        const modelId = model.split('-').pop();
+        vehicle = await getCarModelById(modelId);
+    }
 
     return (
         <main className="main">
