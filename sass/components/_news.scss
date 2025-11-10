@@ -54,8 +54,32 @@
 
   table {
     width: 100%;
-    overflow-x: auto;
-    display: block;
+    border-collapse: collapse;
+    font-size: 13.5pt;
+
+    th,
+    td {
+      padding: 16px;
+      text-align: left;
+      border: 1px solid #ddd;
+    }
+
+    thead tr {
+      background-color: #0d0d0d;
+      color: white;
+    }
+
+    thead th {
+      font-weight: bold;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f0f0f0;
+    }
   }
 
   pre {
