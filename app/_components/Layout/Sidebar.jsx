@@ -22,7 +22,7 @@ const Sidebar = () => {
         { brand: "jeep", path: "/make/jeep/local", label: "Jeep" },
         { brand: "gac", path: "/make/gac/local", label: "GAC" },
         { brand: "hyundai", path: "/make/hyundai/local", label: "Hyundai" },
-        { brand: "range-rover", path: "/make/range-rover/local", label: "Range Rover" },
+        { brand: "range-rover", path: "/make/range-rover/local", label: "Land Rover" },
         { brand: "chevrolet", path: "/make/chevrolet/local", label: "Chevrolet" },
         { brand: "kia", path: "/make/kia/local", label: "KIA" },
         { brand: "mazda", path: "/make/mazda/local", label: "Mazda" },
