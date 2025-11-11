@@ -55,11 +55,11 @@ const Sidebar = () => {
                 {loading ? (<p>Loading makers...</p>) : makers.length > 0 ? (
                     <div className="maker">
                         {makers.map((maker, index) => {
-                            const isActive = pathname.includes(maker.link);
+                            const isActive = pathname.startsWith(`/make/${maker.slug.toLowerCase()}`);
                             return (
                                 <Link
                                     key={index}
-                                    href={maker.link}
+                                    href={maker.link.toLowerCase()}
                                     className={`maker__link ${isActive ? 'active' : ''}`}
                                 >
                                     {maker.path === "/logo" ? (
