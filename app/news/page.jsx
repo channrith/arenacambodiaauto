@@ -12,10 +12,11 @@ import Navbar from "../_components/Layout/Navbar";
 import PostList from "../_components/PostList";
 import MediaDisplay from "../_components/MediaDisplay";
 import Hero from "../_components/Layout/Hero";
+import Pagination from "../_components/Pagination";
 
-async function getNews() {
+async function getNews(page = 1) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news?page=${page}`, {
             headers: {
                 "Content-Type": "application/json",
                 token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
@@ -25,15 +26,41 @@ async function getNews() {
 
         if (!res.ok) throw new Error("Failed to fetch news");
         const data = await res.json();
-        return data.posts || [];
+        return data;
     } catch (err) {
         console.error("❌ Error loading news:", err);
         return [];
     }
 }
 
-export default async function News() {
-    const posts = await getNews();
+async function getFeatured() {
+    try {
+        const res = await fetch(
+            `${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news?page=1`,
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "",
+                },
+                next: { revalidate: 60 },
+            }
+        );
+        if (!res.ok) throw new Error("Failed to fetch featured news");
+        const data = await res.json();
+        return data.posts || [];
+    } catch (err) {
+        console.error("❌ Error loading featured news:", err);
+        return [];
+    }
+}
+
+export default async function News({ searchParams }) {
+    const page = Number(searchParams?.page) || 1;
+    const [featuredPosts, paginatedData] = await Promise.all([
+        getFeatured(),
+        getNews(page),
+    ]);
+    const { posts, current_page, total, per_page } = paginatedData;
 
     const itemListJsonLd = {
         "@context": "https://schema.org",
@@ -81,32 +108,40 @@ export default async function News() {
                         type="application/ld+json"
                         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
                     />
-
-                    <div className="featured-grid">
-                        <Hero
-                            src={posts[0].featured_image.url}
-                            showLink={true}
-                            link={posts[0].link}
-                            alt={posts[0].title} />
-                        <div className="small-gid">
-                            <MediaDisplay
-                                src={posts[1].featured_image.url}
+                    {featuredPosts.length >= 3 && (
+                        <div className="featured-grid">
+                            <Hero
+                                src={featuredPosts[0].featured_image.url}
                                 showLink={true}
-                                link={posts[1].link}
-                                alt={posts[1].title} />
-                            <MediaDisplay
-                                showLink={true}
-                                src={posts[2].featured_image.url}
-                                link={posts[2].link}
-                                alt={posts[2].title} />
+                                link={featuredPosts[0].link}
+                                alt={featuredPosts[0].title} />
+                            <div className="small-gid">
+                                <MediaDisplay
+                                    src={featuredPosts[1].featured_image.url}
+                                    showLink={true}
+                                    link={featuredPosts[1].link}
+                                    alt={featuredPosts[1].title} />
+                                <MediaDisplay
+                                    showLink={true}
+                                    src={featuredPosts[2].featured_image.url}
+                                    link={featuredPosts[2].link}
+                                    alt={featuredPosts[2].title} />
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <Advertisement
                         image="/image/Ads-Poster-800x150px.jpg"
                         alt="Your ad could be here!"
                     // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
                     <PostList posts={posts} />
+
+                    <Pagination
+                        currentPage={current_page}
+                        totalItems={total}
+                        perPage={per_page}
+                        basePath="/news"
+                    />
                 </div>
             </div>
         </main>
