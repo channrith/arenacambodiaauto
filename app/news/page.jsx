@@ -14,6 +14,25 @@ import MediaDisplay from "../_components/MediaDisplay";
 import Hero from "../_components/Layout/Hero";
 import Pagination from "../_components/Pagination";
 
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data.acauto_news || [];
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 async function getNews(page = 1) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news?page=${page}`, {
@@ -56,9 +75,10 @@ async function getFeatured() {
 
 export default async function News({ searchParams }) {
     const page = Number(searchParams?.page) || 1;
-    const [featuredPosts, paginatedData] = await Promise.all([
+    const [featuredPosts, paginatedData, posters] = await Promise.all([
         getFeatured(),
         getNews(page),
+        getPosters(),
     ]);
     const { posts, current_page, total, per_page } = paginatedData;
 
@@ -130,8 +150,8 @@ export default async function News({ searchParams }) {
                         </div>
                     )}
                     <Advertisement
-                        image="/image/Ads-Poster-800x150px.jpg"
-                        alt="Your ad could be here!"
+                        image={posters[0].feature_image_url}
+                        alt={posters[0].title}
                     // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
                     <PostList posts={posts} />

@@ -13,6 +13,25 @@ import Sidebar from "./_components/Layout/Sidebar";
 import Navbar from "./_components/Layout/Navbar";
 import Hero from "./_components/Layout/Hero";
 
+async function getPosters() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+      headers: {
+        "Content-Type": "application/json",
+        token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+      },
+      next: { revalidate: 60 }, // ISR: cache for 1 minute
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch posters");
+    const data = await res.json();
+    return data.acauto_homepage || [];
+  } catch (err) {
+    console.error("❌ Error loading posters:", err);
+    return [];
+  }
+}
+
 async function getNews() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news`, {
@@ -52,6 +71,7 @@ async function getNewsHighlights() {
 }
 
 export default async function Home() {
+  const posters = await getPosters();
   const posts = await getNews();
   const highlights = await getNewsHighlights();
   const special = highlights[0];
@@ -116,8 +136,8 @@ export default async function Home() {
         <div className="content">
           <VideoList videos={videos} />
           <Advertisement
-            image="/image/EN-Euro.gif"
-            alt="Your ad could be here!"
+            image={posters[0].feature_image_url}
+            alt={posters[0].title}
           // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
           />
           <PostList posts={posts} />

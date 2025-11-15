@@ -12,7 +12,27 @@ export const metadata = {
     },
 };
 
-export default function Review() {
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data.acauto_video || [];
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
+export default async function Review() {
+    const posters = await getPosters();
     const videos = ["GyPo4oTFL0E", "E2cr8Xkg_KI", "dQw4w9WgXcQ", "cW56AuNHLag", "lMo3Cd7rdnY", "xUkPbfherCY"];
 
     const webPageJsonLd = {
@@ -86,8 +106,8 @@ export default function Review() {
                     <Hero type="youtube"
                         src="https://www.youtube.com/watch?v=abQ3z3uCauo" />
                     <Advertisement
-                        image="/image/AdsPoster800x150px.jpg"
-                        alt="Your ad could be here!"
+                        image={posters[0].feature_image_url}
+                        alt={posters[0].title}
                     // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
                     />
                     <VideoList videos={videos} />

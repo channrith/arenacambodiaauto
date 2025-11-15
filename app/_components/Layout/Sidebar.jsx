@@ -7,6 +7,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+
+        return data || [];
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 async function getCarMakers() {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/makers?limit=24&service=acauto`, {
@@ -29,8 +49,10 @@ async function getCarMakers() {
 
 const Sidebar = () => {
     const pathname = usePathname();
+    const [posters, setPosters] = useState([]);
     const [makers, setMakers] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingPoster, setLoadingPoster] = useState(true);
 
     useEffect(() => {
         const cached = localStorage.getItem("carMakers");
@@ -46,8 +68,23 @@ const Sidebar = () => {
                 setLoading(false);
             })();
         }
-    }, []);
 
+        const posterCached = localStorage.getItem("posterData");
+        if (posterCached) {
+            setPosters(JSON.parse(posterCached));
+            setLoadingPoster(false);
+        } else {
+            (async () => {
+                const apiResponse = await getPosters();
+                console.log('>>>', apiResponse);
+
+                const posterData = apiResponse.acauto_sidebar || [];
+                setPosters(posterData);
+                localStorage.setItem("posterData", JSON.stringify(posterData));
+                setLoadingPoster(false);
+            })();
+        }
+    }, []);
     return (
         <aside className="sidebar">
             <div className="sidebar__top">
@@ -86,21 +123,23 @@ const Sidebar = () => {
 
             </div>
 
-            <Advertisement
-                image="/image/Oct24-Cellcard-Hero-Banner-Mobile-720-x-460-eng.jpg"
-                alt="Your ad could be here!"
-                link="https://arenacambodiaauto.com/promo"
-                height={300}
-                width={300}
-            />
+            {loadingPoster ? (<p>Loading posters...</p>) : posters.length > 0 ? (
+                posters.map((poster, index) => {
+                    return (
+                        <Advertisement
+                            key={index}
+                            image={poster.feature_image_url}
+                            alt={poster.title}
+                            link={poster.url}
+                            height={300}
+                            width={300}
+                        />
+                    )
+                })
+            ) : (
+                <p>No poster found.</p>
+            )}
 
-            <Advertisement
-                image="/image/f2qy2v60cFOQIjm3DxAbrULlUgiBvdTWCGOG4WUp.jpg"
-                alt="Your ad could be here!"
-                link="https://arenacambodiaauto.com/promo"
-                height={300}
-                width={300}
-            />
         </aside >
     )
 }

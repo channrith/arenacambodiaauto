@@ -4,15 +4,15 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Hero from '@/app/_components/Layout/Hero';
 
-export default function RegionClient({ vehicles, pagination }) {
+export default function RegionClient({ vehicles, posters }) {
     const { maker, market_region } = useParams();
 
     return (
         <div className="content">
             <Hero
                 type='featured-image'
-                alt='Toyota electric vehicles'
-                src="/image/01_ZEVConcpt_FR_Global.jpg" />
+                alt={posters[0].title}
+                src={posters[0].feature_image_url} />
             <div className="car-maker">
                 <div className="tabs">
                     <ul className="tab-menu">
