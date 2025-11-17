@@ -11,8 +11,8 @@ export default function RegionClient({ vehicles, posters }) {
         <div className="content">
             <Hero
                 type='featured-image'
-                alt={posters[0].title}
-                src={posters[0].feature_image_url} />
+                alt={posters.description}
+                src={posters.image_url} />
             <div className="car-maker">
                 <div className="tabs">
                     <ul className="tab-menu">

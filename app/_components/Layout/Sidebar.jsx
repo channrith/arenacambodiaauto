@@ -76,7 +76,6 @@ const Sidebar = () => {
         } else {
             (async () => {
                 const apiResponse = await getPosters();
-                console.log('>>>', apiResponse);
 
                 const posterData = apiResponse.acauto_sidebar || [];
                 setPosters(posterData);
