@@ -47,6 +47,26 @@ async function getCarMakers() {
     }
 }
 
+function setCache(key, data, ttlSeconds) {
+    const record = {
+        data,
+        expiry: Date.now() + ttlSeconds * 1000
+    };
+    localStorage.setItem(key, JSON.stringify(record));
+}
+
+function getCache(key) {
+    const cached = localStorage.getItem(key);
+    if (!cached) return null;
+
+    const record = JSON.parse(cached);
+    if (record.expiry < Date.now()) {
+        localStorage.removeItem(key);
+        return null;
+    }
+    return record.data;
+}
+
 const Sidebar = () => {
     const pathname = usePathname();
     const [posters, setPosters] = useState([]);
@@ -55,23 +75,23 @@ const Sidebar = () => {
     const [loadingPoster, setLoadingPoster] = useState(true);
 
     useEffect(() => {
-        const cached = localStorage.getItem("carMakers");
-        if (cached) {
-            setMakers(JSON.parse(cached));
+        const makersCache = getCache("carMakers");
+        if (makersCache) {
+            setMakers(makersCache);
             setLoading(false);
         } else {
             (async () => {
                 const apiResponse = await getCarMakers();
                 const makersData = apiResponse.makers || [];
                 setMakers(makersData);
-                localStorage.setItem("carMakers", JSON.stringify(makersData));
+                setCache("carMakers", makersData, 60);
                 setLoading(false);
             })();
         }
 
-        const posterCached = localStorage.getItem("posterData");
-        if (posterCached) {
-            setPosters(JSON.parse(posterCached));
+        const postersCache = getCache("posterData");
+        if (postersCache) {
+            setPosters(postersCache);
             setLoadingPoster(false);
         } else {
             (async () => {
@@ -79,7 +99,7 @@ const Sidebar = () => {
 
                 const posterData = apiResponse.acauto_sidebar || [];
                 setPosters(posterData);
-                localStorage.setItem("posterData", JSON.stringify(posterData));
+                setCache("posterData", posterData, 60);
                 setLoadingPoster(false);
             })();
         }
