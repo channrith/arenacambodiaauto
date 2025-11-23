@@ -13,6 +13,25 @@ import Sidebar from "./_components/Layout/Sidebar";
 import Navbar from "./_components/Layout/Navbar";
 import Hero from "./_components/Layout/Hero";
 
+async function getVideos() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/video-list?service=acauto`, {
+      headers: {
+        "Content-Type": "application/json",
+        token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+      },
+      next: { revalidate: 60 }, // ISR: cache for 1 minute
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch videos");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("❌ Error loading videos:", err);
+    return [];
+  }
+}
+
 async function getPosters() {
   try {
     const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
@@ -71,12 +90,11 @@ async function getNewsHighlights() {
 }
 
 export default async function Home() {
+  const videos = await getVideos();
   const posters = await getPosters();
   const posts = await getNews();
   const highlights = await getNewsHighlights();
   const special = highlights[0];
-
-  const videos = ["GyPo4oTFL0E", "E2cr8Xkg_KI", "dQw4w9WgXcQ"];
 
   // Organization Schema
   const organizationJsonLd = {

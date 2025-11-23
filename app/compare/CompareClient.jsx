@@ -6,7 +6,7 @@ import CompareHeader from "../_components/CompareHeader";
 import Hero from "../_components/Layout/Hero";
 import MediaDisplay from "../_components/MediaDisplay";
 
-export default function CompareClient({ vehicle }) {
+export default function CompareClient({ vehicle, youtubeId }) {
     const [products, setProducts] = useState([vehicle]);
 
     const handleSearch = async (index, query) => {
@@ -85,7 +85,7 @@ export default function CompareClient({ vehicle }) {
                 <div className="featured-grid">
                     <Hero
                         type="youtube"
-                        src="https://www.youtube.com/watch?v=A424QQnQUh8" />
+                        src={`https://www.youtube.com/watch?v=${youtubeId}`} />
                     <div className="small-gid">
                         <MediaDisplay
                             type="ads"

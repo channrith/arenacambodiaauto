@@ -12,6 +12,44 @@ export const metadata = {
     },
 };
 
+async function getBannerVideos() {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/banner?service=acauto`, {
+      headers: {
+        "Content-Type": "application/json",
+        token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+      },
+      next: { revalidate: 60 }, // ISR: cache for 1 minute
+    });
+
+    if (!res.ok) throw new Error("Failed to fetch videos");
+    const data = await res.json();
+    return data;
+  } catch (err) {
+    console.error("❌ Error loading videos:", err);
+    return [];
+  }
+}
+
+async function getVideos() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/video-list?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch videos");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading videos:", err);
+        return [];
+    }
+}
+
 async function getPosters() {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
@@ -33,7 +71,8 @@ async function getPosters() {
 
 export default async function Review() {
     const posters = await getPosters();
-    const videos = ["GyPo4oTFL0E", "E2cr8Xkg_KI", "dQw4w9WgXcQ", "cW56AuNHLag", "lMo3Cd7rdnY", "xUkPbfherCY"];
+    const bannerVideos = await getBannerVideos();
+    const videos = await getVideos();
 
     const webPageJsonLd = {
         "@context": "https://schema.org",
@@ -104,7 +143,7 @@ export default async function Review() {
                 <Sidebar />
                 <div className="content">
                     <Hero type="youtube"
-                        src="https://www.youtube.com/watch?v=abQ3z3uCauo" />
+                        src={`https://www.youtube.com/watch?v=${bannerVideos[0]}`} />
                     <Advertisement
                         image={posters[0].feature_image_url}
                         alt={posters[0].title}

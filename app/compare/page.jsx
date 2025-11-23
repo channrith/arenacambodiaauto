@@ -10,6 +10,25 @@ export const metadata = {
     },
 };
 
+async function getBannerVideos() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/banner?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch videos");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading videos:", err);
+        return [];
+    }
+}
+
 async function getCarModelById(modelId) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/model/${modelId}?service=acauto`, {
@@ -31,6 +50,7 @@ async function getCarModelById(modelId) {
 }
 
 export default async function ComparePage({ searchParams }) {
+    const bannerVideos = await getBannerVideos();
     const { make, market_region, model } = searchParams;
     let vehicle = {
         name: "Toyota Urban Cruiser FWD 49kWh",
@@ -67,7 +87,7 @@ export default async function ComparePage({ searchParams }) {
             <Navbar />
             <div className="main__container">
                 <Sidebar />
-                <CompareClient vehicle={vehicle} />
+                <CompareClient vehicle={vehicle} youtubeId={bannerVideos[1]} />
             </div>
         </main>
     );

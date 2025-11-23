@@ -11,7 +11,26 @@ export const metadata = {
     },
 };
 
-export default function About() {
+async function getBannerVideos() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/banner?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch videos");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading videos:", err);
+        return [];
+    }
+}
+
+export default async function About() {
     const webPageJsonLd = {
         "@context": "https://schema.org",
         "@type": "WebPage",
@@ -69,6 +88,8 @@ export default function About() {
         ],
     };
 
+    const bannerVideos = await getBannerVideos();
+
     return (
         <main className="main">
             <script
@@ -91,7 +112,7 @@ export default function About() {
                     <div className="featured-grid">
                         <Hero
                             type="youtube"
-                            src="https://www.youtube.com/watch?v=DHRxnTPrzOQ" />
+                            src={`https://www.youtube.com/watch?v=${bannerVideos[2]}`} />
                         <div className="small-gid">
                             <MediaDisplay
                                 type="ads"
