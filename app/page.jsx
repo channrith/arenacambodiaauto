@@ -140,6 +140,12 @@ export default async function Home() {
             alt={posters[0].title}
           // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
           />
+
+          <Advertisement
+            image="https://cdn.arenacambodiaauto.com/acauto/poster/1763890931247-657066028.jpg"
+            alt="Aeon horizontal"
+          // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+          />
           <PostList posts={posts} />
         </div>
       </div>
