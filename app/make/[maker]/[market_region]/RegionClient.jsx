@@ -3,9 +3,22 @@
 import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import Hero from '@/app/_components/Layout/Hero';
+import Pagination from '@/app/_components/Pagination';
 
-export default function RegionClient({ vehicles, posters }) {
+export default function RegionClient({ data, posters }) {
     const { maker, market_region } = useParams();
+
+    // Fallback data in case API returns empty
+    const vehicles = data.vehicles.length ? data.vehicles : [
+        {
+            name: "Urban Cruiser FWD 49kWh",
+            slug: "urban-cruiser-FWD-49kWh",
+            year_start: 2024,
+            image: "/image/toyota-urban-cruiser-FWD-49kWh.jpg",
+        },
+    ];
+
+    const { current_page, total, per_page } = data;
 
     return (
         <div className="content">
@@ -37,6 +50,13 @@ export default function RegionClient({ vehicles, posters }) {
                             </div>
                         ))}
                     </div>
+
+                    <Pagination
+                        currentPage={current_page}
+                        totalItems={total}
+                        perPage={per_page}
+                        basePath={`/make/${maker}/${market_region}`}
+                    />
 
                 </div>
             </div>

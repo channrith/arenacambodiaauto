@@ -25,9 +25,9 @@ async function getPosters(slug) {
     }
 }
 
-async function getVehicleModel({ region, maker }) {
+async function getVehicleModel({ region, maker, page }) {
     try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/model?global=${region}&maker=${maker}&service=acauto`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/model?global=${region}&maker=${maker}&service=acauto&page=${page}`, {
             headers: {
                 "Content-Type": "application/json",
                 token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
@@ -45,27 +45,19 @@ async function getVehicleModel({ region, maker }) {
     }
 }
 
-export default async function Make({ params }) {
+export default async function Make({ params, searchParams }) {
+    const page = Number(searchParams?.page) || 1;
     const { maker, market_region } = params;
     const region = market_region === 'global' ? 1 : 0;
-    const apiResponse = await getVehicleModel({ region, maker });
+    const apiResponse = await getVehicleModel({ region, maker, page });
     const posters = await getPosters(maker);
-    // Fallback data in case API returns empty
-    const vehicleData = apiResponse.vehicles.length ? apiResponse.vehicles : [
-        {
-            name: "Urban Cruiser FWD 49kWh",
-            slug: "urban-cruiser-FWD-49kWh",
-            year_start: 2024,
-            image: "/image/toyota-urban-cruiser-FWD-49kWh.jpg",
-        },
-    ];
 
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
                 <Sidebar />
-                <RegionClient vehicles={vehicleData} posters={posters} />
+                <RegionClient data={apiResponse} posters={posters} />
             </div>
         </main >
     );
