@@ -49,7 +49,27 @@ async function getCarModelById(modelId) {
     }
 }
 
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 export default async function ComparePage({ searchParams }) {
+    const posters = await getPosters();
     const bannerVideos = await getBannerVideos();
     const { make, market_region, model } = searchParams;
     let vehicle = {
@@ -86,7 +106,7 @@ export default async function ComparePage({ searchParams }) {
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_compare} />
                 <CompareClient vehicle={vehicle} youtubeId={bannerVideos[1]} />
             </div>
         </main>

@@ -13,22 +13,22 @@ export const metadata = {
 };
 
 async function getBannerVideos() {
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/banner?service=acauto`, {
-      headers: {
-        "Content-Type": "application/json",
-        token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
-      },
-      next: { revalidate: 60 }, // ISR: cache for 1 minute
-    });
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/videos/banner?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
 
-    if (!res.ok) throw new Error("Failed to fetch videos");
-    const data = await res.json();
-    return data;
-  } catch (err) {
-    console.error("❌ Error loading videos:", err);
-    return [];
-  }
+        if (!res.ok) throw new Error("Failed to fetch videos");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading videos:", err);
+        return [];
+    }
 }
 
 async function getVideos() {
@@ -62,7 +62,7 @@ async function getPosters() {
 
         if (!res.ok) throw new Error("Failed to fetch posters");
         const data = await res.json();
-        return data.acauto_video || [];
+        return data;
     } catch (err) {
         console.error("❌ Error loading posters:", err);
         return [];
@@ -140,15 +140,18 @@ export default async function Review() {
 
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_video} />
                 <div className="content">
                     <Hero type="youtube"
                         src={`https://www.youtube.com/watch?v=${bannerVideos[0]}`} />
-                    <Advertisement
-                        image={posters[0].feature_image_url}
-                        alt={posters[0].title}
-                    // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
-                    />
+                    {posters.acauto_video.map((poster, index) => (
+                        <Advertisement
+                            key={index}
+                            image={poster.feature_image_url}
+                            alt={poster.title}
+                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                        />
+                    ))}
                     <VideoList videos={videos} />
                 </div>
             </div>

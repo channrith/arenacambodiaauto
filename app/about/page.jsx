@@ -30,6 +30,25 @@ async function getBannerVideos() {
     }
 }
 
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 export default async function About() {
     const webPageJsonLd = {
         "@context": "https://schema.org",
@@ -89,6 +108,7 @@ export default async function About() {
     };
 
     const bannerVideos = await getBannerVideos();
+    const posters = await getPosters();
 
     return (
         <main className="main">
@@ -107,7 +127,7 @@ export default async function About() {
 
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_about} />
                 <div className="content">
                     <div className="featured-grid">
                         <Hero

@@ -26,7 +26,7 @@ async function getPosters() {
 
         if (!res.ok) throw new Error("Failed to fetch posters");
         const data = await res.json();
-        return data.acauto_news || [];
+        return data;
     } catch (err) {
         console.error("❌ Error loading posters:", err);
         return [];
@@ -118,7 +118,7 @@ export default async function News({ searchParams }) {
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_news} />
                 <div className="content">
                     <script
                         type="application/ld+json"
@@ -149,11 +149,14 @@ export default async function News({ searchParams }) {
                             </div>
                         </div>
                     )}
-                    <Advertisement
-                        image={posters[0].feature_image_url}
-                        alt={posters[0].title}
-                    // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
-                    />
+                    {posters?.acauto_news?.map((poster, index) => (
+                        <Advertisement
+                            key={index}
+                            image={poster.feature_image_url}
+                            alt={poster.title}
+                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                        />
+                    ))}
                     <PostList posts={posts} />
 
                     <Pagination

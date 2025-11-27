@@ -7,26 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 
-async function getPosters() {
-    try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
-            headers: {
-                "Content-Type": "application/json",
-                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
-            },
-            next: { revalidate: 60 }, // ISR: cache for 1 minute
-        });
-
-        if (!res.ok) throw new Error("Failed to fetch posters");
-        const data = await res.json();
-
-        return data || [];
-    } catch (err) {
-        console.error("❌ Error loading posters:", err);
-        return [];
-    }
-}
-
 async function getCarMakers() {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/makers?limit=24&service=acauto`, {
@@ -67,12 +47,10 @@ function getCache(key) {
     return record.data;
 }
 
-const Sidebar = () => {
+const Sidebar = ({ posters, exclusive }) => {
     const pathname = usePathname();
-    const [posters, setPosters] = useState([]);
     const [makers, setMakers] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [loadingPoster, setLoadingPoster] = useState(true);
 
     useEffect(() => {
         const makersCache = getCache("carMakers");
@@ -86,21 +64,6 @@ const Sidebar = () => {
                 setMakers(makersData);
                 setCache("carMakers", makersData, 60);
                 setLoading(false);
-            })();
-        }
-
-        const postersCache = getCache("posterData");
-        if (postersCache) {
-            setPosters(postersCache);
-            setLoadingPoster(false);
-        } else {
-            (async () => {
-                const apiResponse = await getPosters();
-
-                const posterData = apiResponse.acauto_sidebar || [];
-                setPosters(posterData);
-                setCache("posterData", posterData, 60);
-                setLoadingPoster(false);
             })();
         }
     }, []);
@@ -142,22 +105,31 @@ const Sidebar = () => {
 
             </div>
 
-            {loadingPoster ? (<p>Loading posters...</p>) : posters.length > 0 ? (
-                posters.map((poster, index) => {
-                    return (
-                        <Advertisement
-                            key={index}
-                            image={poster.feature_image_url}
-                            alt={poster.title}
-                            link={poster.url}
-                            height={300}
-                            width={300}
-                        />
-                    )
-                })
-            ) : (
-                <p>No poster found.</p>
-            )}
+            {posters.map((poster, index) => {
+                return (
+                    <Advertisement
+                        key={index}
+                        image={poster.feature_image_url}
+                        alt={poster.title}
+                        link={poster.url}
+                        height={300}
+                        width={300}
+                    />
+                )
+            })}
+
+            {exclusive.map((poster, index) => {
+                return (
+                    <Advertisement
+                        key={index}
+                        image={poster.feature_image_url}
+                        alt={poster.title}
+                        link={poster.url}
+                        height={300}
+                        width={300}
+                    />
+                )
+            })}
 
         </aside >
     )

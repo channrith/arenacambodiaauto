@@ -44,7 +44,7 @@ async function getPosters() {
 
     if (!res.ok) throw new Error("Failed to fetch posters");
     const data = await res.json();
-    return data.acauto_homepage || [];
+    return data;
   } catch (err) {
     console.error("❌ Error loading posters:", err);
     return [];
@@ -150,20 +150,17 @@ export default async function Home() {
         showLink={true}
         className="height-500" />
       <div className="main__container">
-        <Sidebar />
+        <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_home} />
         <div className="content">
           <VideoList videos={videos} />
-          <Advertisement
-            image={posters[0].feature_image_url}
-            alt={posters[0].title}
-          // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
-          />
-
-          <Advertisement
-            image="https://cdn.arenacambodiaauto.com/acauto/poster/1763890931247-657066028.jpg"
-            alt="Aeon horizontal"
-          // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
-          />
+          {posters.acauto_homepage.map((poster, index) => (
+            <Advertisement
+              key={index}
+              image={poster.feature_image_url}
+              alt={poster.title}
+            // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+            />
+          ))}
           <PostList posts={posts} />
         </div>
       </div>
