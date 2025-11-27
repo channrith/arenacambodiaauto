@@ -140,11 +140,11 @@ export default async function Review() {
 
             <Navbar />
             <div className="main__container">
-                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_video} />
+                <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_video || []} />
                 <div className="content">
                     <Hero type="youtube"
                         src={`https://www.youtube.com/watch?v=${bannerVideos[0]}`} />
-                    {posters.acauto_video.map((poster, index) => (
+                    {posters?.acauto_video?.map((poster, index) => (
                         <Advertisement
                             key={index}
                             image={poster.feature_image_url}

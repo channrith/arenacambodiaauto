@@ -118,7 +118,7 @@ export default async function News({ searchParams }) {
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_news} />
+                <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_news || []} />
                 <div className="content">
                     <script
                         type="application/ld+json"

@@ -106,7 +106,7 @@ export default async function ComparePage({ searchParams }) {
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_compare} />
+                <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_compare || []} />
                 <CompareClient vehicle={vehicle} youtubeId={bannerVideos[1]} />
             </div>
         </main>

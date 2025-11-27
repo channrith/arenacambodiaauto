@@ -150,10 +150,10 @@ export default async function Home() {
         showLink={true}
         className="height-500" />
       <div className="main__container">
-        <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_home} />
+        <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_home || []} />
         <div className="content">
           <VideoList videos={videos} />
-          {posters.acauto_homepage.map((poster, index) => (
+          {posters?.acauto_homepage?.map((poster, index) => (
             <Advertisement
               key={index}
               image={poster.feature_image_url}

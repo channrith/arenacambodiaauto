@@ -127,7 +127,7 @@ export default async function About() {
 
             <Navbar />
             <div className="main__container">
-                <Sidebar posters={posters.acauto_sidebar} exclusive={posters.acauto_sidebar_about} />
+                <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_about || []} />
                 <div className="content">
                     <div className="featured-grid">
                         <Hero

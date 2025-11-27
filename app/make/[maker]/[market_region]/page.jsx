@@ -25,6 +25,25 @@ async function getPosters(slug) {
     }
 }
 
+async function getSidebarPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 async function getVehicleModel({ region, maker, page }) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/vehicle/model?global=${region}&maker=${maker}&service=acauto&page=${page}`, {
@@ -51,12 +70,13 @@ export default async function Make({ params, searchParams }) {
     const region = market_region === 'global' ? 1 : 0;
     const apiResponse = await getVehicleModel({ region, maker, page });
     const posters = await getPosters(maker);
+    const sidebarPosters = await getSidebarPosters();
 
     return (
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={sidebarPosters?.acauto_sidebar || []} exclusive={[]} />
                 <RegionClient data={apiResponse} posters={posters} />
             </div>
         </main >
