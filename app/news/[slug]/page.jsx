@@ -3,6 +3,25 @@ import Navbar from "../../_components/Layout/Navbar";
 import NewsContent from "@/app/_components/NewsContent";
 import Hero from "@/app/_components/Layout/Hero";
 
+async function getPosters() {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/posters?service=acauto`, {
+            headers: {
+                "Content-Type": "application/json",
+                token: process.env.NEXT_PUBLIC_API_ACCESS_TOKEN || "", // optional token if your gateway requires it
+            },
+            next: { revalidate: 60 }, // ISR: cache for 1 minute
+        });
+
+        if (!res.ok) throw new Error("Failed to fetch posters");
+        const data = await res.json();
+        return data;
+    } catch (err) {
+        console.error("❌ Error loading posters:", err);
+        return [];
+    }
+}
+
 async function getNewsById(id) {
     try {
         const res = await fetch(`${process.env.NEXT_PUBLIC_API_GATEWAY_URL}/api/news/${id}`, {
@@ -47,6 +66,7 @@ export default async function New({ params }) {
     const { slug } = params;
     const id = slug.split('-').pop();
     const news = await getNewsById(id);
+    const posters = await getPosters();
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -125,7 +145,7 @@ export default async function New({ params }) {
         <main className="main">
             <Navbar />
             <div className="main__container">
-                <Sidebar />
+                <Sidebar posters={posters?.acauto_sidebar || []} exclusive={posters?.acauto_sidebar_news || []} />
                 <div className="content">
                     <Hero type="featured-image" src={news?.featured_image ? news.featured_image.url : ""} alt={news ? news.title : ""} />
                     {/* <img src={news?.featured_image ? news.featured_image.url : ""} alt={news?.featured_image ? news.featured_image.alt : ""} className="full-width-image" />
