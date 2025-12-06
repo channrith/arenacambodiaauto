@@ -12,12 +12,12 @@ async function getCarModelById(modelId) {
             next: { revalidate: 60 }, // ISR: cache for 1 minute
         });
 
-        if (!res.ok) throw new Error("Failed to fetch news");
+        if (!res.ok) throw new Error("Failed to fetch model");
         const data = await res.json();
 
         return data;
     } catch (err) {
-        console.error("❌ Error loading news:", err);
+        console.error("❌ Error loading model:", err);
         return null;
     }
 }
@@ -46,7 +46,6 @@ export default async function Make({ params }) {
     const { model } = params;
     const id = model.split('-').pop();
 
-    const carData = await getCarModelById(id);
     const defaultCarData = {
         name: "Toyota Urban Cruiser FWD 49kWh",
         year_start: 2024,
@@ -86,6 +85,7 @@ export default async function Make({ params }) {
         ],
     };
 
+    const carData = isNaN(Number(id)) === true ? defaultCarData : await getCarModelById(id);
 
     return (
         <main className="main">

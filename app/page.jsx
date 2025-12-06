@@ -158,7 +158,7 @@ export default async function Home() {
               key={index}
               image={poster.feature_image_url}
               alt={poster.title}
-            // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+              link={poster.url || ""}
             />
           ))}
           <PostList posts={posts} />

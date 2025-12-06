@@ -149,7 +149,7 @@ export default async function Review() {
                             key={index}
                             image={poster.feature_image_url}
                             alt={poster.title}
-                        // link="https://www.khmertimeskh.com/wp-content/uploads/2025/08/EN-Euro.gif"
+                            link={poster.url || ""}
                         />
                     ))}
                     <VideoList videos={videos} />
